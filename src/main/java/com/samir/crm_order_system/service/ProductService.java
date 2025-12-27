@@ -1,5 +1,6 @@
 package com.samir.crm_order_system.service;
 
+import com.samir.crm_order_system.exception.ProductNotFoundException;
 import com.samir.crm_order_system.model.Product;
 import com.samir.crm_order_system.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class ProductService {
     }
 
     public Product update(Long id, Product product){
+        productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
         product.setId(id);
         return productRepository.save(product);
     }
