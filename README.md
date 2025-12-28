@@ -48,20 +48,25 @@ Password: (leave empty)
 ## API Endpoints
 ### User
 #### • GET /users → list all users
+#### • POST /user → create a new user
+#### • PUT /user → update user
+#### • DELETE /user → delete user
 
-#### • POST /users → create a new user
 
 ## Product
 #### • GET /products → list all products
-
-#### • POST /products → create a new product
+#### • POST /product → create a new product
+#### • PUT /product → update product
+#### • DELETE /product → delete product
 
 ### Customer
 #### • GET /customers → list all customers
-
-#### • POST /customers → create a new customer
+#### • POST /customer → create a new customer
+#### • PUT /customer → update customer
+#### • DELETE /customer → delete customer
 
 ## Order
 #### • GET /orders → list all orders
-
-#### • POST /orders → create a new order
+#### • POST /order → create a new order
+#### • PUT /order → update order
+#### • DELETE /order → delete order
