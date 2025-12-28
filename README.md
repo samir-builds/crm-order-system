@@ -28,7 +28,7 @@ The project uses an in‑memory **H2 database** for quick setup and testing.
 ## Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<username>/crm-order-system.git
+   git clone https://github.com/samir-builds/crm-order-system.git
 
 2. Open the project in your IDE (IntelliJ IDEA recommended).
 3. Run the application:
