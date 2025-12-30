@@ -2,6 +2,7 @@ package com.samir.crm_order_system.controller;
 
 import com.samir.crm_order_system.model.Order;
 import com.samir.crm_order_system.service.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +27,12 @@ public class OrderController {
         return orderService.findById(id);
     }
     @PostMapping
-    public Order save(@RequestBody Order order){
+    public Order save(@Valid @RequestBody Order order){
         return orderService.save(order);
     }
 
     @PutMapping("/{id}")
-    public Order update(@PathVariable Long id, @RequestBody Order order){
+    public Order update(@PathVariable Long id, @Valid @RequestBody Order order){
         return orderService.update(id, order);
     }
 
