@@ -1,15 +1,11 @@
 package com.samir.crm_order_system.controller;
 
-import com.samir.crm_order_system.dto.LoginRequest;
-import com.samir.crm_order_system.dto.RegisterRequest;
-import com.samir.crm_order_system.model.Role;
-import com.samir.crm_order_system.model.User;
-import com.samir.crm_order_system.repository.RoleRepository;
-import com.samir.crm_order_system.repository.UserRepository;
+import com.samir.crm_order_system.dto.*;
+import com.samir.crm_order_system.model.*;
+import com.samir.crm_order_system.repository.*;
 import com.samir.crm_order_system.security.JwtUtil;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
