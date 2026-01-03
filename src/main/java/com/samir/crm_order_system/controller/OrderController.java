@@ -4,6 +4,10 @@ import com.samir.crm_order_system.model.Order;
 import com.samir.crm_order_system.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,8 +26,18 @@ public class OrderController {
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping
-    public ResponseEntity<List<Order>> findAll(){
-        List<Order> orders = orderService.findAll();
+    public ResponseEntity<Page<Order>> findAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String direction
+    ){
+        Pageable pageable = PageRequest.of(page, size,
+                direction.equalsIgnoreCase("asc")
+                ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending()
+        );
+        Page<Order> orders = orderService.findAll(pageable);
         return ResponseEntity.ok(orders);
     }
 
