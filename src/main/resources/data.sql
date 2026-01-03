@@ -1,1 +1,2 @@
-INSERT INTO PRODUCT (name, price) VALUES ('Laptop', 1200.0);
+INSERT INTO roles (name) VALUES ('ROLE_USER');
+INSERT INTO roles (name) VALUES ('ROLE_ADMIN');

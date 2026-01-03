@@ -4,6 +4,9 @@ import com.samir.crm_order_system.model.Order;
 import com.samir.crm_order_system.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,27 +20,38 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping
-    public List<Order> findAll(){
-        return orderService.findAll();
+    public ResponseEntity<List<Order>> findAll(){
+        List<Order> orders = orderService.findAll();
+        return ResponseEntity.ok(orders);
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping("/{id}")
-    public Order findById(@PathVariable Long id){
-        return orderService.findById(id);
+    public ResponseEntity<Order> findById(@PathVariable Long id){
+        Order order = orderService.findById(id);
+        return ResponseEntity.ok(order);
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public Order save(@Valid @RequestBody Order order){
-        return orderService.save(order);
+    public ResponseEntity<Order> save(@Valid @RequestBody Order order){
+        Order saved = orderService.save(order);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
-    public Order update(@PathVariable Long id, @Valid @RequestBody Order order){
-        return orderService.update(id, order);
+    public ResponseEntity<Order> update(@PathVariable Long id, @Valid @RequestBody Order order){
+        Order updated = orderService.update(id, order);
+        return ResponseEntity.ok(updated);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping
-    public void delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         orderService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

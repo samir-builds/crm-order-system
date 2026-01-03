@@ -10,11 +10,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class AppUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
@@ -39,3 +41,5 @@ public class AppUserDetailsService implements UserDetailsService {
                 .collect(Collectors.toList());
     }
 }
+
+
