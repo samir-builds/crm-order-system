@@ -1,5 +1,7 @@
 package com.samir.crm_order_system.service;
 
+import com.samir.crm_order_system.annotation.Audit;
+import com.samir.crm_order_system.enums.AuditAction;
 import com.samir.crm_order_system.exception.UserNotFoundException;
 import com.samir.crm_order_system.model.User;
 import com.samir.crm_order_system.repository.UserRepository;
@@ -32,6 +34,7 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 
+    @Audit(action = AuditAction.USER_CREATE, entity = "User")
     public User create(User user) {
         logger.info("Yeni istifadəçi DB‑yə yazılır: {}", user.getUsername());
         User saved = userRepository.save(user);
@@ -39,6 +42,7 @@ public class UserService {
         return saved;
     }
 
+    @Audit(action = AuditAction.USER_UPDATE, entity = "User")
     public User update(Long id, User user) {
         logger.warn("İstifadəçi DB‑də yenilənir, ID: {}", id);
         userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
@@ -48,6 +52,7 @@ public class UserService {
         return updated;
     }
 
+    @Audit(action = AuditAction.USER_DELETE, entity = "User")
     public void deleteById(Long id) {
         logger.warn("İstifadəçi DB‑dən silinir, ID: {}", id);
         getById(id);

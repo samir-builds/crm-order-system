@@ -22,4 +22,9 @@ public class Customer {
 
     @Size(max = 15, message = "Phone number must be max 15 characters")
     private String phone;
+
+    @Override
+    public String toString() {
+        return String.format("Müştəri{id=%d, Ad='%s', Email='%s', Telefon='%s'}", id, name, email, phone);
+    }
 }

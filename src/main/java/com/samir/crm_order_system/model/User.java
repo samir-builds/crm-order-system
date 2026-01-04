@@ -35,4 +35,16 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return String.format(
+                "İstifadəçi ID{id=%d, İstifadəçi adı='%s', Email='%s', Rollar=%s}",
+                id,
+                username,
+                email,
+                roles != null ? roles.toString() : "[]"
+        );
+    }
+
 }

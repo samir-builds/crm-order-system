@@ -32,4 +32,19 @@ public class Order {
     @Min(value = 0, message = "Total price must be positive")
     private double totalPrice;
     private LocalDateTime orderDate = LocalDateTime.now();
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Sifariş{id=%d, Müştəri ID=%d, Məhsul ID=%d, Yaradıldı=%s, Miqdar=%d, Ümumi qiymət=%.2f, Tarix=%s}",
+                id,
+                customer != null ? customer.getId() : null,
+                product != null ? product.getId() : null,
+                createdBy != null ? createdBy.getUsername() : null,
+                quantity,
+                totalPrice,
+                orderDate
+        );
+    }
+
 }

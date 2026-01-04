@@ -1,5 +1,7 @@
 package com.samir.crm_order_system.service;
 
+import com.samir.crm_order_system.annotation.Audit;
+import com.samir.crm_order_system.enums.AuditAction;
 import com.samir.crm_order_system.exception.OrderNotFoundException;
 import com.samir.crm_order_system.model.Order;
 import com.samir.crm_order_system.repository.OrderRepository;
@@ -33,6 +35,7 @@ public class OrderService {
         return orderRepository.findById(id).orElseThrow(() -> new OrderNotFoundException(id));
     }
 
+    @Audit(action = AuditAction.ORDER_CREATE, entity = "Order")
     public Order save(Order order){
         logger.info("{} üçün yeni sifariş DB‑yə yazılır", order.getCustomer().getName());
         order.setTotalPrice(order.getProduct().getPrice() *  order.getQuantity());
@@ -40,6 +43,8 @@ public class OrderService {
         logger.info("Sifariş uğurla DB‑yə yazıldı, ID: {}", saved.getId());
         return saved;
     }
+
+    @Audit(action = AuditAction.ORDER_UPDATE, entity = "Order")
     public Order update(Long id, Order orderDetails) {
         logger.warn("Sifariş DB‑də yenilənir, ID: {}", id);
         Order order = findById(id);
@@ -53,6 +58,7 @@ public class OrderService {
         return updated;
     }
 
+    @Audit(action = AuditAction.ORDER_DELETE, entity = "Order")
     public void delete(Long id){
         logger.warn("Sifariş DB‑dən silinir, ID: {}", id);
         findById(id);

@@ -23,4 +23,16 @@ public class Product {
     private Double price;
 
     private Integer stock;
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Məhsul{id=%d, Ad='%s', Qiymət=%.2f, Stok=%d}",
+                id,
+                name,
+                price,
+                stock
+        );
+    }
+
 }

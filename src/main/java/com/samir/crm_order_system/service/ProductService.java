@@ -1,5 +1,7 @@
 package com.samir.crm_order_system.service;
 
+import com.samir.crm_order_system.annotation.Audit;
+import com.samir.crm_order_system.enums.AuditAction;
 import com.samir.crm_order_system.exception.ProductNotFoundException;
 import com.samir.crm_order_system.model.Product;
 import com.samir.crm_order_system.repository.ProductRepository;
@@ -32,6 +34,7 @@ public class ProductService {
         return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
 
+    @Audit(action = AuditAction.PRODUCT_CREATE, entity = "Product")
     public Product create(Product product) {
         logger.info("Yeni məhsul DB‑yə yazılır: {}", product.getName());
         Product saved = productRepository.save(product);
@@ -39,6 +42,7 @@ public class ProductService {
         return saved;
     }
 
+    @Audit(action = AuditAction.PRODUCT_UPDATE, entity = "Product")
     public Product update(Long id, Product product) {
         logger.warn("Məhsul DB‑də yenilənir, ID: {}", id);
         productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
@@ -48,6 +52,7 @@ public class ProductService {
         return  updated;
     }
 
+    @Audit(action = AuditAction.PRODUCT_DELETE, entity = "Product")
     public void delete(Long id) {
         logger.warn("Məhsul DB‑dən silinir, ID: {}", id);
         getById(id);
