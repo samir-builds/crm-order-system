@@ -1,9 +1,10 @@
 # CRM Order System
 
 ## Overview
-CRM Order System is a simple backend application built with **Spring Boot**.  
+CRM Order System is a backend application built with **Spring Boot**.  
 It provides REST APIs to manage users, products, customers, and orders in a lightweight CRM environment.  
-The project uses an in‑memory **H2 database** for quick setup and testing.
+The project uses an in‑memory H2 database for quick setup and testing, and includes JWT Security, Role‑based authorization, and Audit logging for production‑ready features.
+
 
 ---
 
@@ -13,8 +14,26 @@ The project uses an in‑memory **H2 database** for quick setup and testing.
 - H2 Database (in‑memory)
 - Maven
 - Postman (for API testing)
+- SLF4J + Logback (logging)
 
+- Swagger/OpenAPI (planned)
+- Docker (planned)
 ---
+
+## Features
+- User Management → CRUD operations with validation and DTO layer
+- Product Management → CRUD operations with pagination, sorting, validation
+- Customer Management → CRUD operations with pagination, sorting, and validation
+- Order Management → CRUD operations linking Customer, Product, and User with pagination, sorting
+- Role Management → ROLE_USER, ROLE_ADMIN seeded for RBAC
+- JWT Security → authentication & authorization with role‑based access
+- Audit Logging → CREATE, UPDATE, DELETE operations logged with old/new values
+
+PLANNED
+- Email Notifications → planned for order/customer events
+- Swagger/OpenAPI
+- Docker Deployment → planned with docker‑compose.yml
+- Rate Limiting → planned with Bucket4j
 
 ## Entities
 - **User** → system users
