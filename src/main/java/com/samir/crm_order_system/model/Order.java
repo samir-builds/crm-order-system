@@ -31,6 +31,7 @@ public class Order {
 
     @Min(value = 0, message = "Total price must be positive")
     private double totalPrice;
+
     private LocalDateTime orderDate = LocalDateTime.now();
 
     @Override

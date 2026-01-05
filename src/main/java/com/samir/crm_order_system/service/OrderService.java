@@ -18,13 +18,16 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
 
-    public OrderService(OrderRepository orderRepository) {
+    private final EmailService emailService;
+
+    public OrderService(OrderRepository orderRepository, EmailService emailService) {
         this.orderRepository = orderRepository;
+        this.emailService = emailService;
     }
 
     public Page<Order> findAll(Pageable pageable) {
         logger.info("Sifariş siyahısı DB‑dən gətirilir...");
-        Page<Order> orders =  orderRepository.findAll(pageable);
+        Page<Order> orders = orderRepository.findAll(pageable);
         logger.debug("DB‑dən gətirilən sifariş sayı: {}", orders.getTotalElements());
         return orders;
 
@@ -36,11 +39,27 @@ public class OrderService {
     }
 
     @Audit(action = AuditAction.ORDER_CREATE, entity = "Order")
-    public Order save(Order order){
+    public Order save(Order order) {
         logger.info("{} üçün yeni sifariş DB‑yə yazılır", order.getCustomer().getName());
-        order.setTotalPrice(order.getProduct().getPrice() *  order.getQuantity());
+        order.setTotalPrice(order.getProduct().getPrice() * order.getQuantity());
         Order saved = orderRepository.save(order);
         logger.info("Sifariş uğurla DB‑yə yazıldı, ID: {}", saved.getId());
+        String customerEmail = saved.getCustomer().getEmail();
+        if (customerEmail != null && !customerEmail.isBlank()) {
+            String subject = "Yeni sifariş təsdiqi - ID: " + saved.getId();
+            String body = "Hörmətli " + saved.getCustomer().getName() + ",\n\n" +
+                    "Sifarişiniz uğurla qeydə alındı.\n" +
+                    "Məhsul: " + saved.getProduct().getName() + ",\n\n" +
+                    "Miqdar: " + saved.getQuantity() + ",\n" +
+                    "Ümumi qiymət: " + saved.getTotalPrice() + "\n\n" +
+                    "Təşəkkürlər,\nCRM Order System";
+            emailService.sendSimple(customerEmail, subject, body);
+
+        }
+        emailService.sendSimple("admin@crm-order-system.com",
+                "Yeni sifariş yaradıldı — ID: " + saved.getId(),
+                "Order ID: " + saved.getId() +
+                        "\nCustomer: " + saved.getCustomer().getName());
         return saved;
     }
 
@@ -52,14 +71,14 @@ public class OrderService {
         order.setProduct(orderDetails.getProduct());
         order.setCreatedBy(orderDetails.getCreatedBy());
         order.setQuantity(orderDetails.getQuantity());
-        order.setTotalPrice(orderDetails.getProduct().getPrice() *  orderDetails.getQuantity());
+        order.setTotalPrice(orderDetails.getProduct().getPrice() * orderDetails.getQuantity());
         Order updated = orderRepository.save(order);
         logger.info("Sifariş uğurla yeniləndi, ID: {}", updated.getId());
         return updated;
     }
 
     @Audit(action = AuditAction.ORDER_DELETE, entity = "Order")
-    public void delete(Long id){
+    public void delete(Long id) {
         logger.warn("Sifariş DB‑dən silinir, ID: {}", id);
         findById(id);
         orderRepository.deleteById(id);
