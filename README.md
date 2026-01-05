@@ -28,9 +28,9 @@ The project uses an in‑memory H2 database for quick setup and testing, and inc
 - Role Management → ROLE_USER, ROLE_ADMIN seeded for RBAC
 - JWT Security → authentication & authorization with role‑based access
 - Audit Logging → CREATE, UPDATE, DELETE operations logged with old/new values
+- Email Notifications → for order/customer events
 
 PLANNED
-- Email Notifications → planned for order/customer events
 - Swagger/OpenAPI
 - Docker Deployment → planned with docker‑compose.yml
 - Rate Limiting → planned with Bucket4j
