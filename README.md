@@ -1,4 +1,4 @@
-# CRM Order System
+# 📊 CRM Order System
 
 ## Overview
 CRM Order System is a backend application built with **Spring Boot**.  
@@ -15,32 +15,65 @@ The project uses an in‑memory H2 database for quick setup and testing, and inc
 - Maven
 - Postman (for API testing)
 - SLF4J + Logback (logging)
-
-- Swagger/OpenAPI (planned)
+- Swagger/OpenAPI
+  
 - Docker (planned)
 ---
 
-## Features
-- User Management → CRUD operations with validation and DTO layer
-- Product Management → CRUD operations with pagination, sorting, validation
-- Customer Management → CRUD operations with pagination, sorting, and validation
-- Order Management → CRUD operations linking Customer, Product, and User with pagination, sorting
-- Role Management → ROLE_USER, ROLE_ADMIN seeded for RBAC
-- JWT Security → authentication & authorization with role‑based access
-- Audit Logging → CREATE, UPDATE, DELETE operations logged with old/new values
-- Email Notifications → for order/customer events
-- Swagger/OpenAPI
+## 🚀 Features
+- 👤 **User Management** → CRUD operations with validation and DTO layer  
+- 📦 **Product Management** → CRUD operations with pagination, sorting, validation  
+- 🧑‍🤝‍🧑 **Customer Management** → CRUD operations with pagination, sorting, and validation  
+- 📝 **Order Management** → CRUD operations linking Customer, Product, and User with pagination, sorting  
+- 🔑 **Role Management** → ROLE_USER, ROLE_ADMIN seeded for RBAC  
+- 🔒 **JWT Security** → authentication & authorization with role‑based access  
+- 🕵️ **Audit Logging** → CREATE, UPDATE, DELETE operations logged with old/new values  
+- 📧 **Email Notifications** → for order/customer events  
+- 📖 **Swagger/OpenAPI** → interactive API documentation and testing  
 
-PLANNED
-- Docker Deployment → planned with docker‑compose.yml
-- Rate Limiting → planned with Bucket4j
 
-## Entities
-- **User** → system users
-- **Product** → products available for sale
-- **Customer** → customers placing orders
-- **Order** → links Customer, Product, and User
-- **Role** → optional, for security and authorization
+
+## 🔮 Planned Features
+- 🐳 **Docker Deployment** → planned with docker‑compose.yml  
+- ⏱️ **Rate Limiting** → planned with Bucket4j  
+
+
+
+## 📂 Project Structure
+
+```plaintext
+crm-order-system/
+├── annotation/    # 🏷️ Custom annotations (validation, logging, etc.)
+├── aop/           # 🎯 Aspect Oriented Programming (cross-cutting concerns)
+├── config/        # 🔧 Application & security configuration
+├── controller/    # 🎮 REST API controllers
+├── dto/           # 📦 Data Transfer Objects (request/response models)
+├── enums/         # 🔤 Enum definitions (statuses, roles, etc.)
+├── exception/     # ⚠️ Custom exceptions & global handlers
+├── model/         # 🗂️ Entity classes (JPA models)
+├── repository/    # 💾 Spring Data JPA repositories
+├── security/      # 🔒 JWT filters, authentication & authorization
+├── service/       # ⚙️ Business logic & workflows
+
+```
+
+## 🔄 Event Flow
+
+👤 User Authentication → 📥 Request Handling → ⚙️ Business Logic → 🕵️ Audit Logging  
+📧 Event Notifications → 📤 Response → 📖 API Documentation
+
+##
+
+1. 👤 **Client** → sends request with JWT token  
+2. 🔒 **Security Layer** → validates token & applies role‑based access  
+3. 🎮 **Controller** → receives request, validates via DTO  
+4. ⚙️ **Service** → executes business logic  
+5. 💾 **Repository** → performs DB operations (CRUD)  
+6. 🕵️ **AOP + Audit** → logs operations with old/new values  
+7. 📧 **Notification** → sends email if event occurs  
+8. 📤 **Response** → returns DTO result to client
+
+
 
 ---
 
@@ -63,29 +96,3 @@ JDBC URL: jdbc:h2:mem:crmdb
 Username: sa
 
 Password: (leave empty)
-
-## API Endpoints
-### User
-#### • GET /users → list all users
-#### • POST /user → create a new user
-#### • PUT /user → update user
-#### • DELETE /user → delete user
-
-
-## Product
-#### • GET /products → list all products
-#### • POST /product → create a new product
-#### • PUT /product → update product
-#### • DELETE /product → delete product
-
-### Customer
-#### • GET /customers → list all customers
-#### • POST /customer → create a new customer
-#### • PUT /customer → update customer
-#### • DELETE /customer → delete customer
-
-## Order
-#### • GET /orders → list all orders
-#### • POST /order → create a new order
-#### • PUT /order → update order
-#### • DELETE /order → delete order
