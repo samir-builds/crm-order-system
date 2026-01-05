@@ -21,12 +21,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
 
-    private static final List<String> WHITELIST = List.of(
-            "/auth/login",
-            "/auth/register",
-            "/h2-console",
-            "/"
-    );
+    private static final List<String> WHITELIST =
+            List.of("/auth/login", "/auth/register", "/", "/h2-console");
 
     public JwtAuthFilter(JwtUtil jwtUtil, UserDetailsService userDetailsService) {
         this.jwtUtil = jwtUtil;
@@ -38,8 +34,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         final String path = request.getRequestURI();
+        System.out.println("SAAAAAAAAALAM");
+        System.out.println("Request URI: " + path);
 
-        if (WHITELIST.stream().anyMatch(path::startsWith)) {
+        if (path.startsWith("/auth/") || path.startsWith("/h2-console")) {
             filterChain.doFilter(request, response);
             return;
         }

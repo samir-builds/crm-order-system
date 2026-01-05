@@ -7,6 +7,7 @@ import com.samir.crm_order_system.model.Order;
 import com.samir.crm_order_system.repository.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class OrderService {
     private final OrderRepository orderRepository;
 
     private final EmailService emailService;
+
+    @Value("${app.mail.admin}")
+    private String adminEmail;
 
     public OrderService(OrderRepository orderRepository, EmailService emailService) {
         this.orderRepository = orderRepository;
@@ -56,7 +60,7 @@ public class OrderService {
             emailService.sendSimple(customerEmail, subject, body);
 
         }
-        emailService.sendSimple("admin@crm-order-system.com",
+        emailService.sendSimple(adminEmail,
                 "Yeni sifariş yaradıldı — ID: " + saved.getId(),
                 "Order ID: " + saved.getId() +
                         "\nCustomer: " + saved.getCustomer().getName());
