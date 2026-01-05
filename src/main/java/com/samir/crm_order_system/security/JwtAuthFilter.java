@@ -34,8 +34,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         final String path = request.getRequestURI();
-        System.out.println("SAAAAAAAAALAM");
-        System.out.println("Request URI: " + path);
 
         if (path.startsWith("/auth/") || path.startsWith("/h2-console")) {
             filterChain.doFilter(request, response);

@@ -43,6 +43,7 @@ public class CustomerController {
     }
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    @GetMapping("/{id}")
     public ResponseEntity<Customer> getById(@PathVariable Long id) {
         logger.info("Müştəri ID ilə axtarılır: {}", id);
         Customer customer = customerService.getById(id);
