@@ -16,8 +16,8 @@ The project uses an in‑memory H2 database for quick setup and testing, and inc
 - Postman (for API testing)
 - SLF4J + Logback (logging)
 - Swagger/OpenAPI
+- Docker
   
-- Docker (planned)
 ---
 
 ## 🚀 Features
