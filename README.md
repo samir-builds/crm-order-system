@@ -30,12 +30,8 @@ The project uses an in‑memory H2 database for quick setup and testing, and inc
 - 🕵️ **Audit Logging** → CREATE, UPDATE, DELETE operations logged with old/new values  
 - 📧 **Email Notifications** → for order/customer events  
 - 📖 **Swagger/OpenAPI** → interactive API documentation and testing  
-
-
-
-## 🔮 Planned Features
 - 🐳 **Docker Deployment** → planned with docker‑compose.yml  
-- ⏱️ **Rate Limiting** → planned with Bucket4j  
+ 
 
 
 
