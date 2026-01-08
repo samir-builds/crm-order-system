@@ -1,26 +1,27 @@
-    package com.samir.crm_order_system.dto;
+package com.samir.crm_order_system.dto;
 
-    import jakarta.validation.constraints.Email;
-    import jakarta.validation.constraints.NotNull;
-    import jakarta.validation.constraints.Size;
-    import lombok.Data;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 
-    import java.util.List;
+import java.util.Set;
 
-    @Data
-    public class UserDTO {
-        private Long id;
+@Data
+public class UserDTO {
+    private Long id;
+    @NotNull(message = "Username can not be null")
+    @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
+    private String username;
 
-        @NotNull(message = "Username can not be null")
-        @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
-        private String username;
+    @Email(message = "Email must be valid")
+    private String email;
 
-        @Email(message = "Email must be valid")
-        private String email;
+    @NotNull(message = "Password can not be null")
+    @Size(min = 6, message = "Password must be at least 6 characters")
+    private String password;
 
-        @NotNull(message = "Password can not be null")
-        @Size(min = 6 , message = "Password must be at least 6 characters")
-        private String password;
+    private Set<String> roleNames;
+    private Set<Long> roleIds;
+}
 
-        private List<String> roleNames;
-    }

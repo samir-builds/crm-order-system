@@ -15,18 +15,18 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @NotNull(message = "Username can not be null")
     @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
-    public String username;
+    private String username;
 
     @Email(message = "Email must be valid")
-    public String email;
+    private String email;
 
     @NotNull(message = "Password can not be null")
     @Size(min = 6 , message = "Password must be at least 6 characters")
-    public String password;
+    private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

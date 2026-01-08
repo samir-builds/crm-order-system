@@ -60,8 +60,9 @@ public class AuthController {
 
         String token = jwtUtil.generateToken(new org.springframework.security.core.userdetails.User(
                 user.getUsername(), user.getPassword(),
-                List.of(new SimpleGrantedAuthority(roleUser.getName()))
-        ));
+                user.getRoles().stream()
+                        .map(role -> new SimpleGrantedAuthority(role.getName()))  // .name() enum-u String-ə çevirir
+                        .toList()        ));
         return ResponseEntity.ok(Map.of("token", token));
     }
 }

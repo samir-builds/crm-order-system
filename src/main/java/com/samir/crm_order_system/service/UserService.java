@@ -3,6 +3,7 @@ package com.samir.crm_order_system.service;
 import com.samir.crm_order_system.annotation.Audit;
 import com.samir.crm_order_system.dto.UserDTO;
 import com.samir.crm_order_system.enums.AuditAction;
+import com.samir.crm_order_system.exception.RoleNotFoundException;
 import com.samir.crm_order_system.exception.UserNotFoundException;
 import com.samir.crm_order_system.model.Role;
 import com.samir.crm_order_system.model.User;
@@ -53,14 +54,20 @@ public class UserService {
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
 
-        if (dto.getRoleNames() != null) {
-            for (String roleName : dto.getRoleNames()) {
-                logger.debug("Rol adı gəlir: {}", roleName);
-                Role role = roleRepository.findByName(roleName)
-                        .orElseThrow(() -> new RuntimeException("Belə rol mövcud deyil: " + roleName));
+        if (dto.getRoleIds() != null && !dto.getRoleIds().isEmpty()) {
+            for (Long roleId : dto.getRoleIds()) {
+                logger.debug("Rol ID gəlir: {}", roleId);
+                Role role = roleRepository.findById(roleId)
+                        .orElseThrow(() -> new RoleNotFoundException(roleId)); // Custom exception id ilə
                 logger.debug("DB‑dən tapılan rol: id={}, name={}", role.getId(), role.getName());
                 user.getRoles().add(role);
             }
+        } else {
+            // Default olaraq ROLE_USER verilir (məsələn id=1)
+            Role defaultRole = roleRepository.findById(1L)
+                    .orElseThrow(() -> new RoleNotFoundException(1L));
+            user.getRoles().add(defaultRole);
+            logger.debug("Default rol təyin edildi: {}", defaultRole.getName());
         }
 
         User saved = userRepository.save(user);
@@ -71,7 +78,9 @@ public class UserService {
     @Audit(action = AuditAction.USER_UPDATE, entity = "User")
     public User update(Long id, UserDTO dto) {
         logger.warn("İstifadəçi DB‑də yenilənir, ID: {}", id);
-        User existing = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+
+        User existing = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
 
         existing.setUsername(dto.getUsername());
         existing.setEmail(dto.getEmail());
@@ -79,19 +88,30 @@ public class UserService {
             existing.setPassword(passwordEncoder.encode(dto.getPassword()));
         }
 
+        // Rolları yenidən təyin edirik
         existing.getRoles().clear();
-        if (dto.getRoleNames() != null) {
-            for (String roleName : dto.getRoleNames()) {
-                Role role = roleRepository.findByName(roleName)
-                        .orElseThrow(() -> new RuntimeException("Belə rol mövcud deyil: " + roleName));
+        if (dto.getRoleIds() != null && !dto.getRoleIds().isEmpty()) {
+            for (Long roleId : dto.getRoleIds()) {
+                logger.debug("Rol ID gəlir: {}", roleId);
+                Role role = roleRepository.findById(roleId)
+                        .orElseThrow(() -> new RoleNotFoundException(roleId)); // Custom exception id ilə
+                logger.debug("DB‑dən tapılan rol: id={}, name={}", role.getId(), role.getName());
                 existing.getRoles().add(role);
             }
+        } else {
+            // Default olaraq ROLE_USER verilir (id ilə)
+            Role defaultRole = roleRepository.findByName("ROLE_USER")
+                    .orElseThrow(() -> new RoleNotFoundException(-1L)); // -1L: tapılmadıqda marker id
+            existing.getRoles().add(defaultRole);
+            logger.debug("Default rol təyin edildi: {}", defaultRole.getName());
         }
+
 
         User updated = userRepository.save(existing);
         logger.info("İstifadəçi uğurla yeniləndi, ID: {}", updated.getId());
         return updated;
     }
+
 
     @Audit(action = AuditAction.USER_DELETE, entity = "User")
     public void deleteById(Long id) {

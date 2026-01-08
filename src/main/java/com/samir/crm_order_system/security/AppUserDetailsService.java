@@ -37,9 +37,10 @@ public class AppUserDetailsService implements UserDetailsService {
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Set<Role> roles) {
         return roles.stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
+                .map(role -> new SimpleGrantedAuthority(role.getName())) // enum → String
                 .collect(Collectors.toList());
     }
+
 }
 
 

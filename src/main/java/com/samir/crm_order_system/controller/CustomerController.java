@@ -55,7 +55,7 @@ public class CustomerController {
         return ResponseEntity.ok(customer);
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Customer> save(@Valid @RequestBody Customer customer) {
         logger.info("Yeni müştəri yaradılır: {}", customer.getName());
