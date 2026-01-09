@@ -3,8 +3,12 @@ package com.samir.crm_order_system.service;
 import com.samir.crm_order_system.annotation.Audit;
 import com.samir.crm_order_system.enums.AuditAction;
 import com.samir.crm_order_system.exception.OrderNotFoundException;
+import com.samir.crm_order_system.model.Customer;
 import com.samir.crm_order_system.model.Order;
+import com.samir.crm_order_system.model.Product;
+import com.samir.crm_order_system.repository.CustomerRepository;
 import com.samir.crm_order_system.repository.OrderRepository;
+import com.samir.crm_order_system.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,15 +22,19 @@ public class OrderService {
     private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 
     private final OrderRepository orderRepository;
+    private final ProductRepository productRepository;
+    private final CustomerRepository customerRepository;
 
     private final EmailService emailService;
 
     @Value("${app.mail.admin}")
     private String adminEmail;
 
-    public OrderService(OrderRepository orderRepository, EmailService emailService) {
+    public OrderService(OrderRepository orderRepository, EmailService emailService, ProductRepository productRepository, CustomerRepository customerRepository) {
         this.orderRepository = orderRepository;
         this.emailService = emailService;
+        this.productRepository = productRepository;
+        this.customerRepository = customerRepository;
     }
 
     public Page<Order> findAll(Pageable pageable) {
@@ -45,27 +53,27 @@ public class OrderService {
     @Audit(action = AuditAction.ORDER_CREATE, entity = "Order")
     public Order save(Order order) {
         logger.info("{} üçün yeni sifariş DB‑yə yazılır", order.getCustomer().getName());
-        order.setTotalPrice(order.getProduct().getPrice() * order.getQuantity());
+
+        // 🔹 Burada əlavə et
+        Customer customer = customerRepository.findById(order.getCustomer().getId()).orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+        Product product = productRepository.findById(order.getProduct().getId()).orElseThrow(() -> new IllegalArgumentException("Product not found"));
+
+        order.setCustomer(customer);
+        order.setProduct(product);
+
+        if (product.getPrice() == null) {
+            throw new IllegalArgumentException("Product price is null for product id: " + product.getId());
+        }
+
+        order.setTotalPrice(product.getPrice() * order.getQuantity());
+
         Order saved = orderRepository.save(order);
         logger.info("Sifariş uğurla DB‑yə yazıldı, ID: {}", saved.getId());
-        String customerEmail = saved.getCustomer().getEmail();
-        if (customerEmail != null && !customerEmail.isBlank()) {
-            String subject = "Yeni sifariş təsdiqi - ID: " + saved.getId();
-            String body = "Hörmətli " + saved.getCustomer().getName() + ",\n\n" +
-                    "Sifarişiniz uğurla qeydə alındı.\n" +
-                    "Məhsul: " + saved.getProduct().getName() + ",\n\n" +
-                    "Miqdar: " + saved.getQuantity() + ",\n" +
-                    "Ümumi qiymət: " + saved.getTotalPrice() + "\n\n" +
-                    "Təşəkkürlər,\nCRM Order System";
-            emailService.sendSimple(customerEmail, subject, body);
 
-        }
-        emailService.sendSimple(adminEmail,
-                "Yeni sifariş yaradıldı — ID: " + saved.getId(),
-                "Order ID: " + saved.getId() +
-                        "\nCustomer: " + saved.getCustomer().getName());
+        emailService.sendSimple(adminEmail, "Yeni sifariş yaradıldı — ID: " + saved.getId(), "Order ID: " + saved.getId() + "\nCustomer: " + saved.getCustomer().getName());
         return saved;
     }
+
 
     @Audit(action = AuditAction.ORDER_UPDATE, entity = "Order")
     public Order update(Long id, Order orderDetails) {
