@@ -1,6 +1,7 @@
 package com.samir.crm_order_system.service;
 
 import com.samir.crm_order_system.annotation.Audit;
+import com.samir.crm_order_system.dto.CustomerDTO;
 import com.samir.crm_order_system.enums.AuditAction;
 import com.samir.crm_order_system.exception.CustomerNotFoundException;
 import com.samir.crm_order_system.model.Customer;
@@ -18,11 +19,8 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    private final AuditService auditService;
-
-    public CustomerService(CustomerRepository customerRepository, AuditService auditService) {
+    public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
-        this.auditService = auditService;
     }
 
     public Page<Customer> findAll(Pageable pageable) {
@@ -34,24 +32,29 @@ public class CustomerService {
 
     public Customer getById(Long id) {
         logger.info("Müştəri DB‑də ID ilə axtarılır: {}", id);
-        return customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException(id));
+        return customerRepository.findById(id)
+                .orElseThrow(() -> new CustomerNotFoundException(id));
     }
 
     @Audit(action = AuditAction.CUSTOMER_CREATE, entity = "Customer")
-    public Customer save(Customer customer) {
-        logger.info("Yeni müştəri DB‑yə yazılır: {}", customer.getName());
+    public Customer save(CustomerDTO dto) {
+        logger.info("Yeni müştəri DB‑yə yazılır: {}", dto.getName());
+        Customer customer = new Customer();
+        customer.setName(dto.getName());
+        customer.setEmail(dto.getEmail());
+        customer.setPhone(dto.getPhone());
         Customer saved = customerRepository.save(customer);
         logger.info("Müştəri uğurla DB‑yə yazıldı, ID: {}", saved.getId());
         return saved;
     }
 
     @Audit(action = AuditAction.CUSTOMER_UPDATE, entity = "Customer")
-    public Customer update(Long id, Customer customerDetails) {
+    public Customer update(Long id, CustomerDTO dto) {
         logger.warn("Müştəri DB‑də yenilənir, ID: {}", id);
         Customer customer = getById(id);
-        customer.setName(customerDetails.getName());
-        customer.setEmail(customerDetails.getEmail());
-        customer.setPhone(customerDetails.getPhone());
+        customer.setName(dto.getName());
+        customer.setEmail(dto.getEmail());
+        customer.setPhone(dto.getPhone());
         Customer updated = customerRepository.save(customer);
         logger.info("Müştəri uğurla yeniləndi, ID: {}", updated.getId());
         return updated;
@@ -60,7 +63,7 @@ public class CustomerService {
     @Audit(action = AuditAction.CUSTOMER_DELETE, entity = "Customer")
     public void deleteById(Long id) {
         logger.warn("Müştəri DB‑dən silinir, ID: {}", id);
-        getById(id);
+        getById(id); // yoxlama üçün
         customerRepository.deleteById(id);
         logger.info("Müştəri uğurla silindi, ID: {}", id);
     }

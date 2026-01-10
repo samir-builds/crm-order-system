@@ -1,6 +1,5 @@
 package com.samir.crm_order_system.model;
 
-
 import com.samir.crm_order_system.enums.RoleName;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -11,8 +10,10 @@ import lombok.Data;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, unique = true)
+    private RoleName name;
 }

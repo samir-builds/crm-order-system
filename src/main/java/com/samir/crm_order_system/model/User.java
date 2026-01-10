@@ -19,9 +19,11 @@ public class User {
 
     @NotNull(message = "Username can not be null")
     @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
+    @Column(nullable = false, unique = true, length = 30)
     private String username;
 
     @Email(message = "Email must be valid")
+    @Column(nullable = false, unique = true)
     private String email;
 
     @NotNull(message = "Password can not be null")

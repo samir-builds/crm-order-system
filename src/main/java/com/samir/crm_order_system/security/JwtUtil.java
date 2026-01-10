@@ -2,8 +2,9 @@ package com.samir.crm_order_system.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,14 +23,15 @@ public class JwtUtil {
     @Value("${jwt.secret}")
     private String secret;
 
-    private final long EXP_MS = 1000 * 60 * 60; // 1 saat
+    @Value("${jwt.expiration}")
+    private long EXP_MS;
 
-    // 🔹 Secret key yaratmaq
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    // 🔹 Token yaratmaq
+    private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
+
     public String generateToken(UserDetails user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("roles", user.getAuthorities().stream()
@@ -41,11 +43,10 @@ public class JwtUtil {
                 .subject(user.getUsername())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + EXP_MS))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .signWith(getSigningKey())
                 .compact();
     }
 
-    // 🔹 Claims çıxarmaq
     public Claims extractAllClaims(String token) {
         return Jwts.parser()
                 .verifyWith(getSigningKey())
@@ -54,24 +55,24 @@ public class JwtUtil {
                 .getPayload();
     }
 
-    // 🔹 Username çıxarmaq
     public String extractUsername(String token) {
         return extractAllClaims(token).getSubject();
     }
 
-    // 🔹 Token vaxtını yoxlamaq
     private boolean isTokenExpired(String token) {
         return extractAllClaims(token).getExpiration().before(new Date());
     }
 
-    // 🔹 Token validdir?
     public boolean isValid(String token, UserDetails user) {
         try {
             String username = extractUsername(token);
-            return username != null
-                    && username.equals(user.getUsername())
-                    && !isTokenExpired(token);
+            boolean valid = username != null && username.equals(user.getUsername()) && !isTokenExpired(token);
+            if (!valid) {
+                logger.warn("Token etibarsız və ya vaxtı bitib: {}", username);
+            }
+            return valid;
         } catch (Exception ex) {
+            logger.error("Token yoxlanarkən xəta baş verdi: {}", ex.getMessage());
             return false;
         }
     }

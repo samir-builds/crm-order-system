@@ -1,6 +1,7 @@
 package com.samir.crm_order_system.service;
 
 import com.samir.crm_order_system.annotation.Audit;
+import com.samir.crm_order_system.dto.ProductDTO;
 import com.samir.crm_order_system.enums.AuditAction;
 import com.samir.crm_order_system.exception.ProductNotFoundException;
 import com.samir.crm_order_system.model.Product;
@@ -31,32 +32,39 @@ public class ProductService {
 
     public Product getById(Long id) {
         logger.info("Məhsul DB‑də ID ilə axtarılır: {}", id);
-        return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id));
     }
 
     @Audit(action = AuditAction.PRODUCT_CREATE, entity = "Product")
-    public Product create(Product product) {
-        logger.info("Yeni məhsul DB‑yə yazılır: {}", product.getName());
+    public Product create(ProductDTO dto) {
+        logger.info("Yeni məhsul DB‑yə yazılır: {}", dto.getName());
+        Product product = new Product();
+        product.setName(dto.getName());
+        product.setPrice(dto.getPrice());
+        product.setStock(dto.getStock());
         Product saved = productRepository.save(product);
         logger.info("Məhsul uğurla DB‑yə yazıldı, ID: {}", saved.getId());
         return saved;
     }
 
     @Audit(action = AuditAction.PRODUCT_UPDATE, entity = "Product")
-    public Product update(Long id, Product product) {
-        logger.warn("Məhsul DB‑də yenilənir, ID: {}", id);
-        productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
-        product.setId(id);
-        Product updated = productRepository.save(product);
+    public Product update(Long id, ProductDTO dto) {
+        logger.info("Məhsul DB‑də yenilənir, ID: {}", id);
+        Product existing = getById(id);
+        existing.setName(dto.getName());
+        existing.setPrice(dto.getPrice());
+        existing.setStock(dto.getStock());
+        Product updated = productRepository.save(existing);
         logger.info("Məhsul uğurla yeniləndi, ID: {}", updated.getId());
-        return  updated;
+        return updated;
     }
 
     @Audit(action = AuditAction.PRODUCT_DELETE, entity = "Product")
     public void delete(Long id) {
-        logger.warn("Məhsul DB‑dən silinir, ID: {}", id);
-        getById(id);
-        productRepository.deleteById(id);
+        logger.info("Məhsul DB‑dən silinir, ID: {}", id);
+        Product product = getById(id); // yoxlama üçün
+        productRepository.delete(product);
         logger.info("Məhsul uğurla silindi, ID: {}", id);
     }
 }

@@ -16,12 +16,15 @@ public class Product {
 
     @NotNull(message = "Product name can not be null")
     @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters")
+    @Column(nullable = false, length = 50)
     private String name;
 
     @NotNull(message = "Price can not be null")
     @Min(value = 0, message = "Price must be positive")
+    @Column(nullable = false)
     private Double price;
 
+    @Column
     private Integer stock;
 
     @Override

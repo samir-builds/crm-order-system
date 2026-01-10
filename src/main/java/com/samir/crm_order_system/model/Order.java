@@ -7,23 +7,26 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 @Data
 public class Order {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull(message = "Customer cannot be null")
     @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     @NotNull(message = "Product cannot be null")
     @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @NotNull(message = "CreatedBy cannot be null")
     @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
 
     @Min(value = 1, message = "Quantity must be at least 1")

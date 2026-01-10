@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -42,7 +43,8 @@ public class UserService {
 
     public User getById(Long id) {
         logger.info("İstifadəçi DB‑də ID ilə axtarılır: {}", id);
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
 
     @Audit(action = AuditAction.USER_CREATE, entity = "User")
@@ -54,21 +56,7 @@ public class UserService {
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
 
-        if (dto.getRoleIds() != null && !dto.getRoleIds().isEmpty()) {
-            for (Long roleId : dto.getRoleIds()) {
-                logger.debug("Rol ID gəlir: {}", roleId);
-                Role role = roleRepository.findById(roleId)
-                        .orElseThrow(() -> new RoleNotFoundException(roleId)); // Custom exception id ilə
-                logger.debug("DB‑dən tapılan rol: id={}, name={}", role.getId(), role.getName());
-                user.getRoles().add(role);
-            }
-        } else {
-            // Default olaraq ROLE_USER verilir (məsələn id=1)
-            Role defaultRole = roleRepository.findById(1L)
-                    .orElseThrow(() -> new RoleNotFoundException(1L));
-            user.getRoles().add(defaultRole);
-            logger.debug("Default rol təyin edildi: {}", defaultRole.getName());
-        }
+        assignRoles(user, dto.getRoleIds());
 
         User saved = userRepository.save(user);
         logger.info("İstifadəçi uğurla DB‑yə yazıldı, ID: {}", saved.getId());
@@ -77,7 +65,7 @@ public class UserService {
 
     @Audit(action = AuditAction.USER_UPDATE, entity = "User")
     public User update(Long id, UserDTO dto) {
-        logger.warn("İstifadəçi DB‑də yenilənir, ID: {}", id);
+        logger.info("İstifadəçi DB‑də yenilənir, ID: {}", id);
 
         User existing = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
@@ -88,36 +76,33 @@ public class UserService {
             existing.setPassword(passwordEncoder.encode(dto.getPassword()));
         }
 
-        // Rolları yenidən təyin edirik
         existing.getRoles().clear();
-        if (dto.getRoleIds() != null && !dto.getRoleIds().isEmpty()) {
-            for (Long roleId : dto.getRoleIds()) {
-                logger.debug("Rol ID gəlir: {}", roleId);
-                Role role = roleRepository.findById(roleId)
-                        .orElseThrow(() -> new RoleNotFoundException(roleId)); // Custom exception id ilə
-                logger.debug("DB‑dən tapılan rol: id={}, name={}", role.getId(), role.getName());
-                existing.getRoles().add(role);
-            }
-        } else {
-            // Default olaraq ROLE_USER verilir (id ilə)
-            Role defaultRole = roleRepository.findByName("ROLE_USER")
-                    .orElseThrow(() -> new RoleNotFoundException(-1L)); // -1L: tapılmadıqda marker id
-            existing.getRoles().add(defaultRole);
-            logger.debug("Default rol təyin edildi: {}", defaultRole.getName());
-        }
-
+        assignRoles(existing, dto.getRoleIds());
 
         User updated = userRepository.save(existing);
         logger.info("İstifadəçi uğurla yeniləndi, ID: {}", updated.getId());
         return updated;
     }
 
-
     @Audit(action = AuditAction.USER_DELETE, entity = "User")
     public void deleteById(Long id) {
-        logger.warn("İstifadəçi DB‑dən silinir, ID: {}", id);
-        getById(id);
+        logger.info("İstifadəçi DB‑dən silinir, ID: {}", id);
+        getById(id); // yoxlama üçün
         userRepository.deleteById(id);
         logger.info("İstifadəçi uğurla silindi, ID: {}", id);
+    }
+
+    private void assignRoles(User user, Set<Long> roleIds) {
+        if (roleIds != null && !roleIds.isEmpty()) {
+            for (Long roleId : roleIds) {
+                Role role = roleRepository.findById(roleId)
+                        .orElseThrow(() -> new RoleNotFoundException(roleId));
+                user.getRoles().add(role);
+            }
+        } else {
+            Role defaultRole = roleRepository.findByName("ROLE_USER")
+                    .orElseThrow(() -> new RoleNotFoundException(-1L));
+            user.getRoles().add(defaultRole);
+        }
     }
 }

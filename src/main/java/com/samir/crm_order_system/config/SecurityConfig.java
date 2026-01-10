@@ -25,7 +25,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(10); // güc parametri əlavə olundu
     }
 
     @Bean
@@ -37,7 +37,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless session
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/", "/h2-console/**").permitAll()
@@ -45,9 +45,8 @@ public class SecurityConfig {
                         .requestMatchers("/v3/api-docs/**", "/v3/api-docs.yaml").permitAll()
                         .anyRequest().authenticated()
                 )
-
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .headers(headers -> headers.frameOptions(frame -> frame.disable()));
+                .headers(headers -> headers.frameOptions(frame -> frame.disable())); // H2 console üçün frame icazəsi
 
         return http.build();
     }

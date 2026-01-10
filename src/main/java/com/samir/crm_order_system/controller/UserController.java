@@ -6,7 +6,6 @@ import com.samir.crm_order_system.service.UserService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,8 +19,11 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping
@@ -37,10 +39,6 @@ public class UserController {
     public ResponseEntity<User> getById(@PathVariable Long id) {
         logger.info("İstifadəçi ID ilə axtarılır: {}", id);
         User user = userService.getById(id);
-        if (user == null) {
-            logger.error("İstifadəçi tapılmadı, ID: {}", id);
-            return ResponseEntity.notFound().build();
-        }
         logger.debug("Tapılan istifadəçi: {}", user);
         return ResponseEntity.ok(user);
     }
@@ -57,7 +55,7 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<User> update(@PathVariable Long id, @Valid @RequestBody UserDTO userDTO) {
-        logger.warn("İstifadəçi yenilənir, ID: {}", id);
+        logger.info("İstifadəçi yenilənir, ID: {}", id);
         User updated = userService.update(id, userDTO);
         logger.info("İstifadəçi uğurla yeniləndi, ID: {}", updated.getId());
         return ResponseEntity.ok(updated);
@@ -66,7 +64,7 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        logger.warn("İstifadəçi silinmə əməliyyatı başladı, ID: {}", id);
+        logger.info("İstifadəçi silinmə əməliyyatı başladı, ID: {}", id);
         userService.deleteById(id);
         logger.info("İstifadəçi uğurla silindi, ID: {}", id);
         return ResponseEntity.noContent().build();
