@@ -3,6 +3,7 @@ package com.samir.crm_order_system.service;
 import com.samir.crm_order_system.annotation.Audit;
 import com.samir.crm_order_system.dto.UserDTO;
 import com.samir.crm_order_system.enums.AuditAction;
+import com.samir.crm_order_system.enums.RoleName;
 import com.samir.crm_order_system.exception.RoleNotFoundException;
 import com.samir.crm_order_system.exception.UserNotFoundException;
 import com.samir.crm_order_system.model.Role;
@@ -100,7 +101,7 @@ public class UserService {
                 user.getRoles().add(role);
             }
         } else {
-            Role defaultRole = roleRepository.findByName("ROLE_USER")
+            Role defaultRole = roleRepository.findByName(RoleName.ROLE_USER)
                     .orElseThrow(() -> new RoleNotFoundException(-1L));
             user.getRoles().add(defaultRole);
         }

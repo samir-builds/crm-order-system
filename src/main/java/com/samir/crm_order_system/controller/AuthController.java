@@ -2,6 +2,7 @@ package com.samir.crm_order_system.controller;
 
 import com.samir.crm_order_system.dto.LoginRequest;
 import com.samir.crm_order_system.dto.RegisterRequest;
+import com.samir.crm_order_system.enums.RoleName;
 import com.samir.crm_order_system.model.Role;
 import com.samir.crm_order_system.model.User;
 import com.samir.crm_order_system.repository.RoleRepository;
@@ -70,7 +71,7 @@ public class AuthController {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setEmail(request.getEmail());
 
-        Role roleUser = roleRepository.findByName("ROLE_USER")
+        Role roleUser = roleRepository.findByName(RoleName.ROLE_USER)
                 .orElseThrow(() -> new RuntimeException("ROLE_USER not found"));
         user.getRoles().add(roleUser);
 
@@ -82,7 +83,7 @@ public class AuthController {
                 user.getUsername(),
                 user.getPassword(),
                 user.getRoles().stream()
-                        .map(role -> new SimpleGrantedAuthority(role.getName()))
+                        .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                         .toList()
         ));
     }

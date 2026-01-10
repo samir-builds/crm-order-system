@@ -1,5 +1,6 @@
 package com.samir.crm_order_system.config;
 
+import com.samir.crm_order_system.enums.RoleName;
 import com.samir.crm_order_system.exception.RoleNotFoundException;
 import com.samir.crm_order_system.model.Role;
 import com.samir.crm_order_system.model.User;
@@ -34,7 +35,7 @@ public class DataSeeder implements CommandLineRunner {
     }
 
     private void seedAdminUser() {
-        Role adminRole = roleRepository.findByName("ROLE_ADMIN")
+        Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
                 .orElseThrow(() -> new RoleNotFoundException(-1L));
 
         userRepository.findByUsername("admin").ifPresentOrElse(
