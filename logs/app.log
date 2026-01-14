@@ -2246,3 +2246,8 @@ delete from customers where id=? [23503-232]
 2026-01-10 22:30:02 INFO  c.s.c.service.ProductService - Məhsul siyahısı DB‑dən gətirilir...
 2026-01-10 22:30:02 DEBUG c.s.c.service.ProductService - DB‑dən gətirilən məhsul sayı: 1
 2026-01-10 22:30:02 DEBUG c.s.c.controller.ProductController - Tapılan məhsul sayı: 1
+2026-01-10 22:30:50 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-10 22:30:50 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-01-10 22:30:50 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10 22:30:50 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-01-10 22:30:50 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
