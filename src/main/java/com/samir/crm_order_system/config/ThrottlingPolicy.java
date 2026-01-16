@@ -4,45 +4,28 @@ import io.github.bucket4j.Bandwidth;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
-import java.util.List;
 
 @Component
 public class ThrottlingPolicy {
-    private final ThrottlingProperties props;
 
-    public ThrottlingPolicy(ThrottlingProperties props) {
-        this.props = props;
-    }
-
-    public Bandwidth ipBandwith() {
-        int limit = props.getIp().getLimitPerMinute();
-        Bandwidth bandwidth = Bandwidth.builder()
-                .capacity(limit)
-                .refillIntervally(limit, Duration.ofMinutes(1))
+    public Bandwidth ipBandwidth() {
+        return Bandwidth.builder()
+                .capacity(100)
+                .refillIntervally(100, Duration.ofMinutes(1))
                 .build();
-        return bandwidth;
-
     }
 
-    public Bandwidth userBandwith() {
-        int limit = props.getUser().getLimitPerMinute();
-        Bandwidth bandwidth = Bandwidth.builder()
-                .capacity(limit)
-                .refillIntervally(limit, Duration.ofMinutes(1))
+    public Bandwidth userBandwidth() {
+        return Bandwidth.builder()
+                .capacity(50)
+                .refillIntervally(50, Duration.ofMinutes(1))
                 .build();
-        return bandwidth;
     }
 
-    public Bandwidth authBandwith() {
-        int limit = props.getAuth().getLimitPerMinute();
-        Bandwidth bandwidth = Bandwidth.builder()
-                .capacity(limit)
-                .refillIntervally(limit, Duration.ofMinutes(1))
+    public Bandwidth adminBandwidth() {
+        return Bandwidth.builder()
+                .capacity(200)
+                .refillIntervally(200, Duration.ofMinutes(1))
                 .build();
-        return bandwidth;
-    }
-
-    public List<String> excludePaths() {
-        return props.getExcludePaths();
     }
 }
