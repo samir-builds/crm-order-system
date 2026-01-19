@@ -1,9 +1,7 @@
 # 📊 CRM Order System
 
 ## Overview
-CRM Order System is a backend application built with **Spring Boot**.  
-It provides REST APIs to manage users, products, customers, and orders in a lightweight CRM environment.  
-The project uses an in‑memory H2 database for quick setup and testing, and includes JWT Security, Role‑based authorization, and Audit logging for production‑ready features.
+CRM Order System is a backend application built with Spring Boot. It provides REST APIs to manage users, products, customers, and orders in a lightweight CRM environment. The project uses an in‑memory H2 database for quick setup and testing, and includes JWT Security, Role‑based authorization, Audit logging, request throttling, and full monitoring stack (Prometheus + Grafana + Alertmanager) for production‑ready features.
 
 
 ---
@@ -16,7 +14,11 @@ The project uses an in‑memory H2 database for quick setup and testing, and inc
 - Postman (for API testing)
 - SLF4J + Logback (logging)
 - Swagger/OpenAPI
-- Docker
+- Docker + Docker Compose
+- Prometheus (metrics collection)
+- Alertmanager (alerting via Gmail)
+- Grafana (dashboards & visualization)
+
   
 ---
 
@@ -30,33 +32,38 @@ The project uses an in‑memory H2 database for quick setup and testing, and inc
 - 🕵️ **Audit Logging** → CREATE, UPDATE, DELETE operations logged with old/new values  
 - 📧 **Email Notifications** → for order/customer events  
 - 📖 **Swagger/OpenAPI** → interactive API documentation and testing  
-- 🐳 **Docker Deployment** → planned with docker‑compose.yml  
- 
-
+- ⚡ Request Throttling → in‑memory throttling to prevent abuse
+- 📊 Monitoring → Prometheus metrics, Grafana dashboards (CPU, Memory, Latency, Error Rate, HTTP Requests)
+- 🚨 Alerting → Prometheus rules + Alertmanager Gmail integration
+- 🐳 **Docker Deployment** → planned with docker‑compose.yml
 
 
 ## 📂 Project Structure
 
 ```plaintext
 crm-order-system/
-├── annotation/    # 🏷️ Custom annotations (validation, logging, etc.)
-├── aop/           # 🎯 Aspect Oriented Programming (cross-cutting concerns)
-├── config/        # 🔧 Application & security configuration
-├── controller/    # 🎮 REST API controllers
-├── dto/           # 📦 Data Transfer Objects (request/response models)
-├── enums/         # 🔤 Enum definitions (statuses, roles, etc.)
-├── exception/     # ⚠️ Custom exceptions & global handlers
-├── model/         # 🗂️ Entity classes (JPA models)
-├── repository/    # 💾 Spring Data JPA repositories
-├── security/      # 🔒 JWT filters, authentication & authorization
-├── service/       # ⚙️ Business logic & workflows
-
+├── annotation/       # 🏷️ Custom annotations (validation, logging, etc.)
+├── aop/              # 🎯 Aspect Oriented Programming (cross-cutting concerns)
+├── config/           # 🔧 Application & security configuration
+├── controller/       # 🎮 REST API controllers
+├── dto/              # 📦 Data Transfer Objects (request/response models)
+├── enums/            # 🔤 Enum definitions (statuses, roles, etc.)
+├── exception/        # ⚠️ Custom exceptions & global handlers
+├── model/            # 🗂️ Entity classes (JPA models)
+├── repository/       # 💾 Spring Data JPA repositories
+├── security/         # 🔒 JWT filters, authentication & authorization
+├── service/          # ⚙️ Business logic & workflows
+├── docker-compose.yml # 🐳 App + Prometheus + Alertmanager + Grafana
+├── prometheus.yml     # 📊 Prometheus config
+├── rules.yml          # 🚨 Alerting rules
+├── alertmanager.yml   # 📧 Alertmanager config
 ```
 
 ## 🔄 Event Flow
 
-👤 User Authentication → 📥 Request Handling → ⚙️ Business Logic → 🕵️ Audit Logging  
+👤 User Authentication → 📥 Request Handling → ⚙️ Business Logic → 🕵️ Audit Logging
 📧 Event Notifications → 📤 Response → 📖 API Documentation
+📊 Metrics → Prometheus → Grafana Dashboards → 🚨 Alertmanager (Gmail)
 
 ##
 
@@ -86,9 +93,15 @@ crm-order-system/
 4. Access the H2 console in your browser:
     ```bash
     http://localhost:8080/h2-console
-
 JDBC URL: jdbc:h2:mem:crmdb
-
 Username: sa
-
 Password: (leave empty)
+
+5. Start monitoring stack:
+    ```bash
+    docker compose up -d
+
+- 📊 **Prometheus** → [http://localhost:9090](http://localhost:9090)
+- 🚨 **Alertmanager** → [http://localhost:9093](http://localhost:9093)
+- 📈 **Grafana** → [http://localhost:3000](http://localhost:3000) *(default login: admin/admin)*
+
