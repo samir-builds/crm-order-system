@@ -4,6 +4,7 @@ networks:
 services:
   app:
     build: .
+    container_name: crm-order-app
     ports:
       - "8080:8080"
     networks:
@@ -11,15 +12,28 @@ services:
 
   prometheus:
     image: prom/prometheus
+    container_name: prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./rules.yml:/etc/prometheus/rules.yml
     ports:
       - "9090:9090"
     networks:
       - monitoring
 
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
+    networks:
+      - monitoring
+
   grafana:
     image: grafana/grafana
+    container_name: grafana
     ports:
       - "3000:3000"
     networks:

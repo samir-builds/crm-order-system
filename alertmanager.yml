@@ -1,0 +1,13 @@
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'owner.crmorder@gmail.com'
+  smtp_auth_username: 'owner.crmorder@gmail.com'
+  smtp_auth_password: 'Salamaleykum2001!'
+
+route:
+  receiver: 'email-alert'
+
+receivers:
+  - name: 'email-alert'
+    email_configs:
+      - to: 'owner.crmorder@gmail.com'
