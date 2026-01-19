@@ -3,8 +3,8 @@ networks:
 
 services:
   app:
-    build: .
     container_name: crm-order-app
+    image: samirali3v/crm-order-app:latest
     ports:
       - "8080:8080"
     networks:
@@ -38,3 +38,9 @@ services:
       - "3000:3000"
     networks:
       - monitoring
+    volumes:
+      - grafana-data:/var/lib/grafana
+    restart: unless-stopped
+
+volumes:
+  grafana-data:
