@@ -52,4 +52,5 @@ jobs:
             cd ~/crm-order-system
             docker compose pull
             docker compose up -d
+            sleep 20
             curl -f http://localhost:8080/actuator/health || exit 1
