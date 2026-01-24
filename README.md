@@ -18,6 +18,7 @@ CRM Order System is a backend application built with Spring Boot. It provides RE
 - Prometheus (metrics collection)
 - Alertmanager (alerting via Gmail)
 - Grafana (dashboards & visualization)
+- GitHub Actions (CI/CD pipeline)
 
   
 ---
@@ -36,6 +37,7 @@ CRM Order System is a backend application built with Spring Boot. It provides RE
 - 📊 Monitoring → Prometheus metrics, Grafana dashboards (CPU, Memory, Latency, Error Rate, HTTP Requests)
 - 🚨 Alerting → Prometheus rules + Alertmanager Gmail integration
 - 🐳 **Docker Deployment** → planned with docker‑compose.yml
+- ⚙️ CI/CD Pipeline → GitHub Actions build, test, Docker push, and auto‑deploy to VPS
 
 
 ## 📂 Project Structure
@@ -57,6 +59,7 @@ crm-order-system/
 ├── prometheus.yml     # 📊 Prometheus config
 ├── rules.yml          # 🚨 Alerting rules
 ├── alertmanager.yml   # 📧 Alertmanager config
+└── .github/workflows/ci-cd.yml # ⚙️ CI/CD pipeline
 ```
 
 ## 🔄 Event Flow
@@ -75,7 +78,7 @@ crm-order-system/
 6. 🕵️ **AOP + Audit** → logs operations with old/new values  
 7. 📧 **Notification** → sends email if event occurs  
 8. 📤 **Response** → returns DTO result to client
-
+9. 📊 Metrics → Prometheus → Grafana Dashboards → 🚨 Alertmanager (Gmail)
 
 
 ---
