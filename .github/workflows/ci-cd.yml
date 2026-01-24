@@ -52,5 +52,14 @@ jobs:
             cd ~/crm-order-system
             docker compose pull
             docker compose up -d
-            sleep 20
-            curl -f http://localhost:8080/actuator/health || exit 1
+            # Sağlamlıq yoxlaması üçün retry loop
+            for i in {1..5}; do
+              echo "Health check attempt $i..."
+              sleep 10
+              if curl -f http://localhost:8080/actuator/health; then
+                echo "Application is UP"
+                exit 0
+              fi
+            done
+            echo "Application failed health check after retries"
+            exit 1
