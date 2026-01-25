@@ -18,6 +18,4 @@ public class CustomerDTO {
 
     @Size(max = 15, message = "Phone number must be max 15 characters")
     private String phone;
-
-    // trigger part 6
 }
