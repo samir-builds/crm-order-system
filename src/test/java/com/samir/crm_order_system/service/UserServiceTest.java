@@ -159,4 +159,60 @@ public class UserServiceTest {
 
         verify(userRepository, times(1)).deleteById(1L);
     }
+
+    @Test
+    void testUpdateUser_WithRoleIds() {
+        User existing = new User();
+        existing.setId(1L);
+        existing.setUsername("oldName");
+        existing.setEmail("old@mail.com");
+        existing.setPassword("oldPass");
+        existing.setRoles(new HashSet<>());
+
+        UserDTO dto = new UserDTO();
+        dto.setUsername("newName");
+        dto.setEmail("new@mail.com");
+        dto.setPassword("newPass");
+        dto.setRoleIds(Set.of(10L));
+
+        Role role = new Role();
+        role.setId(10L);
+        role.setName(RoleName.ROLE_ADMIN);
+
+        when(userRepository.findById(1L)).thenReturn(Optional.of(existing));
+        when(passwordEncoder.encode("newPass")).thenReturn("encodedNewPass");
+        when(roleRepository.findById(10L)).thenReturn(Optional.of(role));
+
+        User updated = new User();
+        updated.setId(1L);
+        updated.setUsername("newName");
+        updated.setEmail("new@mail.com");
+        updated.setPassword("encodedNewPass");
+        updated.setRoles(Set.of(role));
+
+        when(userRepository.save(any(User.class))).thenReturn(updated);
+
+        User result = userService.update(1L, dto);
+
+        assertTrue(result.getRoles().contains(role));
+        verify(roleRepository, times(1)).findById(10L);
+    }
+
+    @Test
+    void testUpdateUser_RoleNotFound() {
+        User existing = new User();
+        existing.setId(1L);
+
+        UserDTO dto = new UserDTO();
+        dto.setUsername("newName");
+        dto.setEmail("new@mail.com");
+        dto.setPassword("newPass");
+        dto.setRoleIds(Set.of(99L));
+
+        when(userRepository.findById(1L)).thenReturn(Optional.of(existing));
+        when(roleRepository.findById(99L)).thenReturn(Optional.empty());
+
+        assertThrows(RoleNotFoundException.class, () -> userService.update(1L, dto));
+    }
+
 }

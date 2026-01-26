@@ -103,6 +103,4 @@ public class AuthControllerIntegrationTest {
                         .content(objectMapper.writeValueAsString(login)))
                 .andExpect(status().isForbidden());
     }
-
-
 }
