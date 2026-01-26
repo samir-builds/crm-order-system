@@ -101,7 +101,7 @@ public class AuthControllerIntegrationTest {
         mockMvc.perform(post("/auth/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(login)))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
     }
 
 
