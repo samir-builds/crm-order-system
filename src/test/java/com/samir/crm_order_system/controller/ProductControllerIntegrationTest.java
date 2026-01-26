@@ -312,5 +312,24 @@ public class ProductControllerIntegrationTest {
                 .andExpect(jsonPath("$.content[2].name").value("iPad"));
     }
 
+    @Test
+    void testCreateProduct_ValidationError() throws Exception {
+        ProductDTO dto = new ProductDTO();
+        dto.setName("");
+        dto.setPrice(1500.0);
+        dto.setStock(10);
 
+        mockMvc.perform(post("/products")
+                        .header("Authorization", "Bearer " + adminToken)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testGetProduct_NotFound() throws Exception {
+        mockMvc.perform(get("/products/999999")
+                        .header("Authorization", "Bearer " + userToken))
+                .andExpect(status().isNotFound());
+    }
 }
