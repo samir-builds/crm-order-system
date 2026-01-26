@@ -36,14 +36,13 @@ public class AuditAspect {
         this.productRepository = productRepository;
     }
 
-    @SuppressWarnings("unused")
     @AfterReturning(value = "@annotation(audit)", returning = "result")
     public void logAudit(JoinPoint joinPoint, Audit audit, Object result) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         String details;
 
         switch (audit.action()) {
-            case ORDER_UPDATE -> details = handleUpdate(joinPoint, audit);
+            case ORDER_UPDATE -> details = handleUpdate(joinPoint, audit, result);
             case ORDER_DELETE -> details = handleDelete(joinPoint, audit);
             default -> details = String.format("%s əməliyyatı icra olundu, nəticə=%s",
                     audit.entity(), result != null ? result.toString() : "null");
@@ -52,17 +51,20 @@ public class AuditAspect {
         auditService.log(audit.entity(), audit.action(), username, details);
     }
 
-    private String handleUpdate(JoinPoint joinPoint, Audit audit) {
+    private String handleUpdate(JoinPoint joinPoint, Audit audit, Object result) {
         Object[] args = joinPoint.getArgs();
         Long id = (Long) args[0];
-        Object newData = args[1];
 
+        // old entity
         Object oldData = switch (audit.entity()) {
             case "Customer" -> customerRepository.findById(id).orElse(null);
             case "Order" -> orderRepository.findById(id).orElse(null);
             case "Product" -> productRepository.findById(id).orElse(null);
             default -> null;
         };
+
+        // new entity (method result)
+        Object newData = result;
 
         return (oldData != null)
                 ? buildDiffDetails(audit.entity(), id, oldData, newData)
@@ -87,18 +89,22 @@ public class AuditAspect {
 
     private String buildDiffDetails(String entity, Long id, Object oldData, Object newData) {
         StringBuilder sb = new StringBuilder(String.format("%s yeniləndi, ID=%d", entity, id));
+
         for (Field field : oldData.getClass().getDeclaredFields()) {
             field.setAccessible(true);
             try {
                 Object oldVal = field.get(oldData);
                 Object newVal = field.get(newData);
+
                 if (oldVal != null && !oldVal.equals(newVal)) {
                     sb.append(String.format(", %s: %s → %s", field.getName(), oldVal, newVal));
                 }
+
             } catch (IllegalAccessException e) {
                 logger.warn("Field access error in AuditAspect", e);
             }
         }
+
         return sb.toString();
     }
 }

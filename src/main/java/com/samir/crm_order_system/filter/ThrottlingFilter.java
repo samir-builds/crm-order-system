@@ -42,8 +42,19 @@ public class ThrottlingFilter implements Filter {
             throws IOException, ServletException {
 
         HttpServletRequest httpReq = (HttpServletRequest) request;
-        String ip = httpReq.getRemoteAddr();
+        String path = httpReq.getRequestURI();
 
+        if (path.startsWith("/auth/")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        if (path.startsWith("/h2-console")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        String ip = httpReq.getRemoteAddr();
         Bucket ipBucket = resolveBucket("IP: " + ip, policy.ipBandwidth());
 
         String authHeader = httpReq.getHeader("Authorization");
@@ -67,22 +78,23 @@ public class ThrottlingFilter implements Filter {
 
         Bucket userBucket = null;
 
-        if(userId != null){
-            if("ROLE_ADMIN".equals(role)){
+        if (userId != null) {
+            if ("ROLE_ADMIN".equals(role)) {
                 userBucket = resolveBucket("ADMIN: " + userId, policy.adminBandwidth());
-            }else{
+            } else {
                 userBucket = resolveBucket("USER: " + userId, policy.userBandwidth());
             }
         }
+
         boolean allowed = ipBucket.tryConsume(1);
 
-        if(userBucket != null){
+        if (userBucket != null) {
             allowed = allowed && userBucket.tryConsume(1);
         }
-        if(allowed){
-            chain.doFilter(request,response);
-        }
-        else{
+
+        if (allowed) {
+            chain.doFilter(request, response);
+        } else {
             ((HttpServletResponse) response).setStatus(429);
             response.getWriter().write("Rate limit exceeded");
         }
