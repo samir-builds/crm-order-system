@@ -27,11 +27,11 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private long EXP_MS;
 
+    private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
+
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
-
-    private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
 
     public String generateToken(UserDetails user) {
         Map<String, Object> claims = new HashMap<>();
@@ -49,39 +49,41 @@ public class JwtUtil {
     }
 
     public Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                .verifyWith(getSigningKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
-    }
-
-    public String extractUserId(String token) {
-        return extractAllClaims(token).getSubject();
-    }
-
-    public List<String> extractRoles(String token) {
-        return extractAllClaims(token).get("roles", List.class);
+        try {
+            return Jwts.parser()
+                    .verifyWith(getSigningKey())
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload();
+        } catch (Exception ex) {
+            logger.error("Token parsing failed: {}", ex.getMessage());
+            return null;
+        }
     }
 
     public String extractUsername(String token) {
-        return extractAllClaims(token).getSubject();
+        Claims claims = extractAllClaims(token);
+        return claims != null ? claims.getSubject() : null;
+    }
+
+    public List<String> extractRoles(String token) {
+        Claims claims = extractAllClaims(token);
+        return claims != null ? claims.get("roles", List.class) : List.of();
     }
 
     private boolean isTokenExpired(String token) {
-        return extractAllClaims(token).getExpiration().before(new Date());
+        Claims claims = extractAllClaims(token);
+        return claims == null || claims.getExpiration().before(new Date());
     }
 
     public boolean isValid(String token, UserDetails user) {
         try {
             String username = extractUsername(token);
-            boolean valid = username != null && username.equals(user.getUsername()) && !isTokenExpired(token);
-            if (!valid) {
-                logger.warn("Token etibarsız və ya vaxtı bitib: {}", username);
-            }
-            return valid;
+            return username != null &&
+                    username.equals(user.getUsername()) &&
+                    !isTokenExpired(token);
         } catch (Exception ex) {
-            logger.error("Token yoxlanarkən xəta baş verdi: {}", ex.getMessage());
+            logger.error("Token validation error: {}", ex.getMessage());
             return false;
         }
     }
