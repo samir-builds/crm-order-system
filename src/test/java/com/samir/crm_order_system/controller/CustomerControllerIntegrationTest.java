@@ -32,8 +32,29 @@ public class CustomerControllerIntegrationTest {
 
     @BeforeEach
     void setup() throws Exception {
-        adminToken = registerAndLogin("admin", "1234");
+        adminToken = login("admin", "1234");
         userToken = registerAndLogin("samir", "1234");
+    }
+
+    private String login(String username, String password) throws Exception {
+        LoginRequest login = new LoginRequest();
+        login.setUsername(username);
+        login.setPassword(password);
+
+        String response = mockMvc.perform(post("/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(login)))
+                .andDo(result -> {
+                    System.out.println("LOGIN STATUS = " + result.getResponse().getStatus());
+                    System.out.println("LOGIN BODY = " + result.getResponse().getContentAsString());
+                })
+
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        return objectMapper.readTree(response).get("token").asText();
     }
 
     private String registerAndLogin(String username, String password) throws Exception {
