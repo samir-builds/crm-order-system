@@ -5711,3 +5711,516 @@ insert into users (email,password,username,id) values (?,?,?,default) [23505-232
 2026-01-26 19:18:03 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-01-26 19:18:03 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
 2026-01-26 19:18:03 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-01-26 19:19:52 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-01-26 19:19:52 INFO  c.s.c.c.AuthControllerIntegrationTest - Starting AuthControllerIntegrationTest using Java 17.0.12 with PID 6700 (started by user in C:\Users\user\Desktop\crm-order-system)
+2026-01-26 19:19:52 DEBUG c.s.c.c.AuthControllerIntegrationTest - Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-01-26 19:19:52 INFO  c.s.c.c.AuthControllerIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+2026-01-26 19:19:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-26 19:19:55 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 166 ms. Found 6 JPA repository interfaces.
+2026-01-26 19:19:56 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-26 19:19:56 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.39.Final
+2026-01-26 19:19:56 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-01-26 19:19:57 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-26 19:19:57 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-01-26 19:19:57 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:crmdb user=SA
+2026-01-26 19:19:57 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-01-26 19:19:57 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-26 19:19:59 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-26 19:19:59 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-26 19:20:00 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name appUserDetailsService
+2026-01-26 19:20:00 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-26 19:20:01 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2026-01-26 19:20:02 INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:crmdb'
+2026-01-26 19:20:02 DEBUG c.s.c.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-01-26 19:20:02 INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-01-26 19:20:02 INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-01-26 19:20:02 INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2026-01-26 19:20:02 INFO  c.s.c.c.AuthControllerIntegrationTest - Started AuthControllerIntegrationTest in 10.442 seconds (process running for 11.855)
+2026-01-26 19:20:03 INFO  c.s.c.config.DataSeeder - Admin user already exists: admin
+2026-01-26 19:20:03 WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-01-26 19:20:03 WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-01-26 19:20:03 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:04 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:04 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:04 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:04 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:04 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:04 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:04 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:04 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:04 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:04 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:04 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.samir.crm_order_system.controller.CustomerControllerIntegrationTest]: CustomerControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-01-26 19:20:04 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.samir.crm_order_system.CrmOrderSystemApplication for test class com.samir.crm_order_system.controller.CustomerControllerIntegrationTest
+2026-01-26 19:20:04 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:04 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:04 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:04 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:04 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:04 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:04 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:05 INFO  c.s.c.controller.CustomerController - Yeni mü?t?ri yarad?l?r: John Doe
+2026-01-26 19:20:05 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: John Doe
+2026-01-26 19:20:05 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 1
+2026-01-26 19:20:05 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla yarad?ld?, ID: 1
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:05 INFO  c.s.c.controller.CustomerController - Mü?t?ri ID il? axtar?l?r: 1
+2026-01-26 19:20:05 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:05 DEBUG c.s.c.controller.CustomerController - Tap?lan mü?t?ri: Mü?t?ri{id=1, Ad='John Doe', Email='john@example.com', Telefon='123456789'}
+2026-01-26 19:20:05 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:05 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:05 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:05 INFO  c.s.c.controller.CustomerController - Yeni mü?t?ri yarad?l?r: Original Name
+2026-01-26 19:20:05 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Original Name
+2026-01-26 19:20:05 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 2
+2026-01-26 19:20:05 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla yarad?ld?, ID: 2
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:05 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:05 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:05 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:05 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:05 INFO  c.s.c.controller.CustomerController - Mü?t?ri siyah?s? ça??r?ld?: page=0, size=10, sortBy=id, direction=asc
+2026-01-26 19:20:05 INFO  c.s.c.service.CustomerService - Mü?t?ri siyah?s? DB?d?n g?tirilir...
+2026-01-26 19:20:05 DEBUG c.s.c.service.CustomerService - DB?d?n g?tiril?n mü?t?ri say?: 0
+2026-01-26 19:20:05 DEBUG c.s.c.controller.CustomerController - Tap?lan mü?t?ri say?: 0
+2026-01-26 19:20:05 WARN  o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-01-26 19:20:05 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:05 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:05 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:06 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:06 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:06 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:06 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:06 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:06 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:06 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:06 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:06 INFO  c.s.c.controller.CustomerController - Yeni mü?t?ri yarad?l?r: Delete Me
+2026-01-26 19:20:06 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Delete Me
+2026-01-26 19:20:06 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 3
+2026-01-26 19:20:06 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla yarad?ld?, ID: 3
+2026-01-26 19:20:06 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:06 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:06 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:06 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:06 WARN  c.s.c.controller.CustomerController - Mü?t?ri silinm? ?m?liyyat? ba?lad?, ID: 3
+2026-01-26 19:20:06 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d?n silinir, ID: 3
+2026-01-26 19:20:06 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 3
+2026-01-26 19:20:06 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla silindi, ID: 3
+2026-01-26 19:20:06 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla silindi, ID: 3
+2026-01-26 19:20:06 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:06 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:06 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:06 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:06 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:06 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:06 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:06 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:06 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:06 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:06 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:06 INFO  c.s.c.controller.CustomerController - Yeni mü?t?ri yarad?l?r: Old Name
+2026-01-26 19:20:06 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Old Name
+2026-01-26 19:20:06 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 4
+2026-01-26 19:20:06 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla yarad?ld?, ID: 4
+2026-01-26 19:20:06 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:06 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:06 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:06 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:06 WARN  c.s.c.controller.CustomerController - Mü?t?ri yenil?nir, ID: 4
+2026-01-26 19:20:06 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d? yenil?nir, ID: 4
+2026-01-26 19:20:06 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 4
+2026-01-26 19:20:06 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla yenil?ndi, ID: 4
+2026-01-26 19:20:06 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla yenil?ndi, ID: 4
+2026-01-26 19:20:06 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:06 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:06 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:06 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:07 INFO  c.s.c.controller.CustomerController - Yeni mü?t?ri yarad?l?r: Alice
+2026-01-26 19:20:07 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Alice
+2026-01-26 19:20:07 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 5
+2026-01-26 19:20:07 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla yarad?ld?, ID: 5
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:07 INFO  c.s.c.controller.CustomerController - Yeni mü?t?ri yarad?l?r: Bob
+2026-01-26 19:20:07 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Bob
+2026-01-26 19:20:07 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 6
+2026-01-26 19:20:07 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla yarad?ld?, ID: 6
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:07 INFO  c.s.c.controller.CustomerController - Yeni mü?t?ri yarad?l?r: Charlie
+2026-01-26 19:20:07 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Charlie
+2026-01-26 19:20:07 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 7
+2026-01-26 19:20:07 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla yarad?ld?, ID: 7
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:07 INFO  c.s.c.controller.CustomerController - Mü?t?ri siyah?s? ça??r?ld?: page=0, size=10, sortBy=name, direction=asc
+2026-01-26 19:20:07 INFO  c.s.c.service.CustomerService - Mü?t?ri siyah?s? DB?d?n g?tirilir...
+2026-01-26 19:20:07 DEBUG c.s.c.service.CustomerService - DB?d?n g?tiril?n mü?t?ri say?: 3
+2026-01-26 19:20:07 DEBUG c.s.c.controller.CustomerController - Tap?lan mü?t?ri say?: 3
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:07 INFO  c.s.c.controller.CustomerController - Yeni mü?t?ri yarad?l?r: Protected Customer
+2026-01-26 19:20:07 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Protected Customer
+2026-01-26 19:20:07 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 8
+2026-01-26 19:20:07 INFO  c.s.c.controller.CustomerController - Mü?t?ri u?urla yarad?ld?, ID: 8
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:07 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:07 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.samir.crm_order_system.controller.ProductControllerIntegrationTest]: ProductControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-01-26 19:20:07 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.samir.crm_order_system.CrmOrderSystemApplication for test class com.samir.crm_order_system.controller.ProductControllerIntegrationTest
+2026-01-26 19:20:07 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:07 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:07 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - Yeni m?hsul yarad?l?r: iPhone
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: iPhone
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 1
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - M?hsul u?urla yarad?ld?, ID: 1
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - M?hsul ID il? axtar?l?r: 1
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:08 DEBUG c.s.c.controller.ProductController - Tap?lan m?hsul: M?hsul{id=1, Ad='iPhone', Qiym?t=1500.00, Stok=65}
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - Yeni m?hsul yarad?l?r: Keyboard
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: Keyboard
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 2
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - M?hsul u?urla yarad?ld?, ID: 2
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - Yeni m?hsul yarad?l?r: Old Laptop
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: Old Laptop
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 3
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - M?hsul u?urla yarad?ld?, ID: 3
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - M?hsul silinm? ?m?liyyat? ba?lad?, ID: 3
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - M?hsul DB?d?n silinir, ID: 3
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 3
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - M?hsul u?urla silindi, ID: 3
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - M?hsul u?urla silindi, ID: 3
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:08 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - Yeni m?hsul yarad?l?r: iPhone
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: iPhone
+2026-01-26 19:20:08 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 4
+2026-01-26 19:20:08 INFO  c.s.c.controller.ProductController - M?hsul u?urla yarad?ld?, ID: 4
+2026-01-26 19:20:08 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:08 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:08 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - Yeni m?hsul yarad?l?r: AirPods
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: AirPods
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 5
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - M?hsul u?urla yarad?ld?, ID: 5
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - Yeni m?hsul yarad?l?r: MacBook
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: MacBook
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 6
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - M?hsul u?urla yarad?ld?, ID: 6
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - Yeni m?hsul yarad?l?r: iPad
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: iPad
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 7
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - M?hsul u?urla yarad?ld?, ID: 7
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - M?hsul siyah?s? ça??r?ld?: page=0, size=10, sortBy=name, direction=asc
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - M?hsul siyah?s? DB?d?n g?tirilir...
+2026-01-26 19:20:09 DEBUG c.s.c.service.ProductService - DB?d?n g?tiril?n m?hsul say?: 3
+2026-01-26 19:20:09 DEBUG c.s.c.controller.ProductController - Tap?lan m?hsul say?: 3
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - Yeni m?hsul yarad?l?r: Old Laptop
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: Old Laptop
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 8
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - M?hsul u?urla yarad?ld?, ID: 8
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - M?hsul yenil?nir, ID: 8
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - M?hsul DB?d? yenil?nir, ID: 8
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 8
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - M?hsul u?urla yenil?ndi, ID: 8
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - M?hsul u?urla yenil?ndi, ID: 8
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: admin
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - Yeni m?hsul yarad?l?r: Old Laptop
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: Old Laptop
+2026-01-26 19:20:09 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 9
+2026-01-26 19:20:09 INFO  c.s.c.controller.ProductController - M?hsul u?urla yarad?ld?, ID: 9
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:09 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:09 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:09 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: admin
+2026-01-26 19:20:09 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: admin
+2026-01-26 19:20:10 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/register ? JWT yoxlanmad?
+2026-01-26 19:20:10 DEBUG c.s.c.security.JwtAuthFilter - Whitelist endpoint: /auth/login ? JWT yoxlanmad?
+2026-01-26 19:20:10 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:10 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:10 INFO  c.s.c.security.JwtAuthFilter - Token istifad?çi üçün yoxlan?r: samir
+2026-01-26 19:20:10 INFO  c.s.c.security.AppUserDetailsService - Müvafiq username il? istifad?çi yükl?nir: samir
+2026-01-26 19:20:10 DEBUG c.s.c.security.AppUserDetailsService - ?stifad?çi tap?ld?: samir
+2026-01-26 19:20:10 INFO  c.s.c.security.JwtAuthFilter - Token etibarl?d?r: samir
+2026-01-26 19:20:10 INFO  c.s.c.controller.ProductController - M?hsul siyah?s? ça??r?ld?: page=0, size=10, sortBy=id, direction=asc
+2026-01-26 19:20:10 INFO  c.s.c.service.ProductService - M?hsul siyah?s? DB?d?n g?tirilir...
+2026-01-26 19:20:10 DEBUG c.s.c.service.ProductService - DB?d?n g?tiril?n m?hsul say?: 0
+2026-01-26 19:20:10 DEBUG c.s.c.controller.ProductController - Tap?lan m?hsul say?: 0
+2026-01-26 19:20:10 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.samir.crm_order_system.CrmOrderSystemApplicationTests]: CrmOrderSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-01-26 19:20:10 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.samir.crm_order_system.CrmOrderSystemApplication for test class com.samir.crm_order_system.CrmOrderSystemApplicationTests
+2026-01-26 19:20:10 INFO  c.s.c.CrmOrderSystemApplicationTests - Starting CrmOrderSystemApplicationTests using Java 17.0.12 with PID 6700 (started by user in C:\Users\user\Desktop\crm-order-system)
+2026-01-26 19:20:10 DEBUG c.s.c.CrmOrderSystemApplicationTests - Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-01-26 19:20:10 INFO  c.s.c.CrmOrderSystemApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-01-26 19:20:10 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-26 19:20:10 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 6 JPA repository interfaces.
+2026-01-26 19:20:10 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-26 19:20:10 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-01-26 19:20:10 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-26 19:20:10 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-01-26 19:20:10 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:crmdb user=SA
+2026-01-26 19:20:10 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-01-26 19:20:10 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-26 19:20:10 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-26 19:20:10 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-26 19:20:11 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name appUserDetailsService
+2026-01-26 19:20:11 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-26 19:20:11 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2026-01-26 19:20:11 INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:crmdb'
+2026-01-26 19:20:11 INFO  c.s.c.CrmOrderSystemApplicationTests - Started CrmOrderSystemApplicationTests in 1.454 seconds (process running for 20.811)
+2026-01-26 19:20:11 INFO  c.s.c.config.DataSeeder - Admin user already exists: admin
+2026-01-26 19:20:11 WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-01-26 19:20:11 WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-01-26 19:20:11 WARN  c.s.c.security.JwtUtil - Token etibars?z v? ya vaxt? bitib: samir
+2026-01-26 19:20:11 ERROR c.s.c.security.JwtUtil - Token yoxlanark?n x?ta ba? verdi: JWT expired 1748 milliseconds ago at 2026-01-26T15:20:10.000Z. Current time: 2026-01-26T15:20:11.748Z. Allowed clock skew: 0 milliseconds.
+2026-01-26 19:20:11 ERROR c.s.c.security.JwtUtil - Token yoxlanark?n x?ta ba? verdi: The specified key byte array is 72 bits which is not secure enough for any JWT HMAC-SHA algorithm.  The JWT JWA Specification (RFC 7518, Section 3.2) states that keys used with HMAC-SHA algorithms MUST have a size >= 256 bits (the key size must be greater than or equal to the hash output size).  Consider using the Jwts.SIG.HS256.key() builder (or HS384.key() or HS512.key()) to create a key guaranteed to be secure enough for your preferred HMAC-SHA algorithm.  See https://tools.ietf.org/html/rfc7518#section-3.2 for more information.
+2026-01-26 19:20:12 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 99
+2026-01-26 19:20:12 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d? yenil?nir, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla yenil?ndi, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Samir
+2026-01-26 19:20:12 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.CustomerService - Mü?t?ri siyah?s? DB?d?n g?tirilir...
+2026-01-26 19:20:12 DEBUG c.s.c.service.CustomerService - DB?d?n g?tiril?n mü?t?ri say?: 1
+2026-01-26 19:20:12 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d?n silinir, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla silindi, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.OrderService - Sifari? siyah?s? DB?d?n g?tirilir...
+2026-01-26 19:20:12 DEBUG c.s.c.service.OrderService - DB?d?n g?tiril?n sifari? say?: 1
+2026-01-26 19:20:12 WARN  c.s.c.service.OrderService - Sifari? DB?d?n silinir, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.OrderService - Sifari? u?urla silindi, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 99
+2026-01-26 19:20:12 WARN  c.s.c.service.OrderService - Sifari? DB?d? yenil?nir, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.OrderService - Sifari? u?urla yenil?ndi, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.OrderService - Yeni sifari? DB?y? yaz?l?r: customerId=1, productId=2
+2026-01-26 19:20:12 INFO  c.s.c.service.OrderService - Sifari? u?urla DB?y? yaz?ld?, ID: 10
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: Test Product
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul DB?d? yenil?nir, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul u?urla yenil?ndi, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul DB?d?n silinir, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul u?urla silindi, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.ProductService - M?hsul siyah?s? DB?d?n g?tirilir...
+2026-01-26 19:20:12 DEBUG c.s.c.service.ProductService - DB?d?n g?tiril?n m?hsul say?: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - ?stifad?çi siyah?s? DB?d?n g?tirilir...
+2026-01-26 19:20:12 DEBUG c.s.c.service.UserService - DB?d?n g?tiril?n istifad?çi say?: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - Yeni istifad?çi DB?y? yaz?l?r: Samir
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - ?stifad?çi u?urla DB?y? yaz?ld?, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - ?stifad?çi u?urla yenil?ndi, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 99
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - ?stifad?çi DB?d?n silinir, ID: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 1
+2026-01-26 19:20:12 INFO  c.s.c.service.UserService - ?stifad?çi u?urla silindi, ID: 1
+2026-01-26 19:20:12 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-26 19:20:12 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-01-26 19:20:12 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-01-26 19:20:12 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-26 19:20:12 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-01-26 19:20:12 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.

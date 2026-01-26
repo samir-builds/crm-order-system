@@ -123,7 +123,7 @@ public class CustomerControllerIntegrationTest {
         dto.setEmail("john@example.com");
         dto.setPhone("123456789");
 
-        mockMvc.perform(post("/customer")
+        mockMvc.perform(post("/customers")
                         .header("Authorization", "Bearer " + adminToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
