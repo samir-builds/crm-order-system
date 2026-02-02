@@ -7,14 +7,14 @@ INSERT INTO roles (name)
 SELECT 'ROLE_USER'
     WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name='ROLE_USER');
 
--- Admin user (ID-ni özün yazmırsan!)
+-- Admin user (password = admin)
 INSERT INTO users (username, password, email)
 SELECT 'admin',
-       '$2a$10$ICfK43hiGzyFZc0tHs8GUuIM5nPmy78qehQYYXnzHEAE3tD.4MwbS',
+       '$2a$12$/N0oUkkBG4StfDWW967IE.Z5V3QTvBwiZu6gFUpd7b2QA3XYIVVy6',
        'admin@gmail.com'
     WHERE NOT EXISTS (SELECT 1 FROM users WHERE username='admin');
 
--- Admin role binding (DÜZGÜN VERSİYA)
+-- Admin role binding
 INSERT INTO user_roles (user_id, role_id)
 SELECT
     (SELECT id FROM users WHERE username='admin'),

@@ -1,5 +1,6 @@
 package com.samir.crm_order_system.config;
 
+import com.samir.crm_order_system.security.AppUserDetailsService;
 import com.samir.crm_order_system.security.JwtAuthFilter;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,8 +13,9 @@ class SecurityConfigTest {
     @Test
     void testPasswordEncoderBean() {
         JwtAuthFilter jwtAuthFilter = mock(JwtAuthFilter.class);
+        AppUserDetailsService userDetailsService = mock(AppUserDetailsService.class);
 
-        SecurityConfig config = new SecurityConfig(jwtAuthFilter);
+        SecurityConfig config = new SecurityConfig(jwtAuthFilter, userDetailsService);
 
         PasswordEncoder encoder = config.passwordEncoder();
 
