@@ -1,12 +1,23 @@
 networks:
   monitoring:
 
+volumes:
+  grafana-data:
+  h2data:
+  esdata:
+
 services:
   app:
     container_name: crm-order-app
+    build: .
     image: samirali3v/crm-order-app:latest
     ports:
       - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_CONFIG_NAME: application
+    volumes:
+      - h2data:/data
     networks:
       - monitoring
 
@@ -55,5 +66,26 @@ services:
     networks:
       - monitoring
 
-volumes:
-  grafana-data:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ports:
+      - "9200:9200"
+    networks:
+      - monitoring
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+  fluentbit:
+    image: fluent/fluent-bit:2.2-debug
+    container_name: fluentbit
+    volumes:
+      - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+      - ./parsers.conf:/fluent-bit/etc/parsers.conf
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+    networks:
+      - monitoring

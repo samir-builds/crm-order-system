@@ -1,7 +1,7 @@
 package com.samir.crm_order_system.exception;
 
-public class UserNotFoundException extends RuntimeException{
-    public UserNotFoundException(Long id){
+public class UserNotFoundException extends RuntimeException {
+    public UserNotFoundException(Long id) {
         super("User with id " + id + " not found.");
     }
 }

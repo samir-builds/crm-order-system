@@ -44,14 +44,10 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@Valid @RequestBody LoginRequest request) {
-        System.out.println("LOGIN REQUEST CAME: " + request.getUsername());
-        System.out.println("AUTHENTICATING USER: " + request.getUsername());
         Authentication authentication = authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
         );
-        System.out.println("AUTH SUCCESS: " + authentication.isAuthenticated());
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        System.out.println("TOKEN GENERATION STARTED");
         String token = jwtUtil.generateToken(userDetails);
         return ResponseEntity.ok(Map.of("token", token));
     }
@@ -91,11 +87,4 @@ public class AuthController {
                         .toList()
         ));
     }
-
-    @GetMapping("/ping")
-    public String ping() {
-        System.out.println("PING CALLED");
-        return "OK";
-    }
-
 }
