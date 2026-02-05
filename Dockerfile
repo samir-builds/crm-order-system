@@ -1,4 +1,7 @@
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
-COPY target/crm-order-system-0.0.1-SNAPSHOT.jar app.jar
-CMD ["java", "-jar", "app.jar"]
+
+COPY opentelemetry-javaagent.jar /app/opentelemetry-javaagent.jar
+COPY target/*.jar app.jar
+
+ENTRYPOINT ["java", "-javaagent:/app/opentelemetry-javaagent.jar", "-Dotel.exporter.otlp.endpoint=http://jaeger:4318", "-Dotel.service.name=crm-order-app", "-jar", "app.jar"]
