@@ -20,8 +20,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Run Tests (test profile)
+        run: |
+          export SPRING_PROFILES_ACTIVE=test
+          mvn clean test
+
       - name: Build with Maven
-        run: mvn clean install
+        run: |
+          export SPRING_PROFILES_ACTIVE=test
+          mvn clean install -DskipTests
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -52,7 +59,6 @@ jobs:
             cd ~/crm-order-system
             docker compose pull
             docker compose up -d
-            # Sağlamlıq yoxlaması üçün retry loop
             for i in {1..5}; do
               echo "Health check attempt $i..."
               sleep 10

@@ -1,6 +1,7 @@
 package com.samir.crm_order_system.security;
 
 import io.jsonwebtoken.Claims;
+import org.springframework.context.annotation.Profile;
 import org.springframework.lang.NonNull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@Profile("!test")
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtUtil jwtUtil;

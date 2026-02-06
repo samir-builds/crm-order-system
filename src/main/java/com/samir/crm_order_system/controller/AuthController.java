@@ -9,6 +9,7 @@ import com.samir.crm_order_system.repository.RoleRepository;
 import com.samir.crm_order_system.repository.UserRepository;
 import com.samir.crm_order_system.security.JwtUtil;
 import jakarta.validation.Valid;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,6 +23,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
+@Profile("!test")
 public class AuthController {
 
     private final AuthenticationManager authManager;

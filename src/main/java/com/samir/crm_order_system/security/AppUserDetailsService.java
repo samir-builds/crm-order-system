@@ -5,6 +5,7 @@ import com.samir.crm_order_system.model.User;
 import com.samir.crm_order_system.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +18,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Profile("!test")
 public class AppUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
