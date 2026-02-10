@@ -17,10 +17,7 @@ services:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_CONFIG_NAME: application
       JAVA_OPTS: "-Xms256m -Xmx512m"
-    deploy:
-      resources:
-        limits:
-          memory: 600m
+    mem_limit: 512m
     volumes:
       - h2data:/data
     networks:
@@ -31,10 +28,7 @@ services:
     container_name: grafana
     ports:
       - "3000:3000"
-    deploy:
-      resources:
-        limits:
-          memory: 200m
+    mem_limit: 128m
     volumes:
       - grafana-data:/var/lib/grafana
     networks:
@@ -44,10 +38,7 @@ services:
   prometheus:
     image: prom/prometheus
     container_name: prometheus
-    deploy:
-      resources:
-        limits:
-          memory: 200m
+    mem_limit: 128m
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - ./rules.yml:/etc/prometheus/rules.yml
@@ -59,10 +50,7 @@ services:
   alertmanager:
     image: prom/alertmanager
     container_name: alertmanager
-    deploy:
-      resources:
-        limits:
-          memory: 100m
+    mem_limit: 64m
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
     ports:
@@ -73,10 +61,7 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
-    deploy:
-      resources:
-        limits:
-          memory: 100m
+    mem_limit: 64m
     ports:
       - "8081:8080"
     volumes:
@@ -94,10 +79,7 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=false
       - ES_JAVA_OPTS=-Xms256m -Xmx256m
-    deploy:
-      resources:
-        limits:
-          memory: 350m
+    mem_limit: 350m
     ports:
       - "9200:9200"
     volumes:
@@ -108,10 +90,7 @@ services:
   fluentbit:
     image: fluent/fluent-bit:2.2-debug
     container_name: fluentbit
-    deploy:
-      resources:
-        limits:
-          memory: 50m
+    mem_limit: 50m
     volumes:
       - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
       - ./parsers.conf:/fluent-bit/etc/parsers.conf
@@ -122,10 +101,7 @@ services:
   jaeger:
     image: jaegertracing/all-in-one:1.52
     container_name: jaeger
-    deploy:
-      resources:
-        limits:
-          memory: 150m
+    mem_limit: 128m
     ports:
       - "16686:16686"
       - "4317:4317"

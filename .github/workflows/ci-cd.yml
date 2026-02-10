@@ -59,7 +59,11 @@ jobs:
             cd ~/crm-order-system
             docker compose pull
             docker compose up -d
-            for i in {1..5}; do
+
+            echo "Starting health checks..."
+
+            # 15 attempts × 10 seconds = 150 seconds (2.5 minutes)
+            for i in {1..15}; do
               echo "Health check attempt $i..."
               sleep 10
               if curl -f http://localhost:8080/actuator/health; then
@@ -67,5 +71,6 @@ jobs:
                 exit 0
               fi
             done
+
             echo "Application failed health check after retries"
             exit 1
