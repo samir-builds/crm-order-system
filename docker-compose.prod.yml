@@ -5,10 +5,10 @@ services:
     image: samirali3v/crm-order-app:latest
     ports:
       - "8080:8080"
+    entrypoint: ["java", "-jar", "app.jar"]
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_CONFIG_NAME: application
-      JAVA_TOOL_OPTIONS: ""        # OTEL agenti PRODDAN TAM SÖNDÜRÜR
       JAVA_OPTS: "-Xms256m -Xmx512m"
     mem_limit: 600m
     volumes:
