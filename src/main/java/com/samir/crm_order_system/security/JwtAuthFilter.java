@@ -60,7 +60,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         final String token = authHeader.substring(7);
         final String username = jwtUtil.extractUsername(token);
 
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (username != null) {
             logger.info("Token istifadəçi üçün yoxlanır: {}", username);
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
@@ -71,7 +71,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 List<String> roles = claims.get("roles", List.class);
 
                 List<GrantedAuthority> authorities = roles.stream()
-                        .map(SimpleGrantedAuthority::new)
+                        .map(role -> new SimpleGrantedAuthority(
+                                role.startsWith("ROLE_") ? role : "ROLE_" + role
+                        ))
                         .collect(Collectors.toList());
 
                 UsernamePasswordAuthenticationToken authToken =

@@ -1,5 +1,6 @@
 package com.samir.crm_order_system.model;
 
+import com.samir.crm_order_system.enums.OrderStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -34,18 +35,24 @@ public class Order {
 
     private LocalDateTime orderDate = LocalDateTime.now();
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private OrderStatus status = OrderStatus.PENDING;
+
     @Override
     public String toString() {
         return String.format(
-                "Sifariş{id=%d, Müştəri ID=%d, Məhsul ID=%d, Yaradıldı=%s, Miqdar=%d, Ümumi qiymət=%.2f, Tarix=%s}",
+                "Sifariş{id=%d, Müştəri ID=%d, Məhsul ID=%d, Yaradıldı=%s, Miqdar=%d, Ümumi qiymət=%.2f, Tarix=%s, Status=%s}",
                 id,
                 customer != null ? customer.getId() : null,
                 product != null ? product.getId() : null,
                 createdBy != null ? createdBy.getUsername() : null,
                 quantity,
                 totalPrice,
-                orderDate
+                orderDate,
+                status
         );
     }
+
 
 }

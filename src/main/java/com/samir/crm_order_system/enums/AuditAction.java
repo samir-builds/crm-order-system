@@ -10,6 +10,7 @@ public enum AuditAction {
     ORDER_CREATE,
     ORDER_UPDATE,
     ORDER_DELETE,
+    ORDER_STATUS_CHANGE,
 
     // Product actions
     PRODUCT_CREATE,

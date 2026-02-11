@@ -1,6 +1,7 @@
 package com.samir.crm_order_system.controller;
 
 import com.samir.crm_order_system.dto.OrderDTO;
+import com.samir.crm_order_system.dto.StatusUpdateRequest;
 import com.samir.crm_order_system.model.Order;
 import com.samir.crm_order_system.service.OrderService;
 import jakarta.validation.Valid;
@@ -84,5 +85,13 @@ public class OrderController {
         orderService.delete(id);
         logger.info("Sifariş uğurla silindi, ID: {}", id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Order> updateStatus(
+            @PathVariable Long id, @RequestBody StatusUpdateRequest request) {
+        Order updatedOrder = orderService.changeStatus(id, request.getStatus());
+        return ResponseEntity.ok(updatedOrder);
+
     }
 }

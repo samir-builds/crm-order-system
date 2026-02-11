@@ -3,6 +3,7 @@ package com.samir.crm_order_system.service;
 import com.samir.crm_order_system.annotation.Audit;
 import com.samir.crm_order_system.dto.OrderDTO;
 import com.samir.crm_order_system.enums.AuditAction;
+import com.samir.crm_order_system.enums.OrderStatus;
 import com.samir.crm_order_system.exception.OrderNotFoundException;
 import com.samir.crm_order_system.model.Customer;
 import com.samir.crm_order_system.model.Order;
@@ -114,4 +115,33 @@ public class OrderService {
         orderRepository.deleteById(id);
         logger.info("Sifariş uğurla silindi, ID: {}", id);
     }
+
+    @Audit(action = AuditAction.ORDER_STATUS_CHANGE, entity = "Order")
+    public Order changeStatus(Long orderId, OrderStatus newStatus) {
+        Order order = orderRepository.findById(orderId).orElseThrow(() -> new OrderNotFoundException(orderId));
+        OrderStatus oldStatus = order.getStatus();
+        validateStatusChange(order.getStatus(), newStatus);
+        order.setStatus(newStatus);
+        logger.info("Sifarişin statusu dəyişdirildi: ID={} | {} → {}", orderId, oldStatus, newStatus);
+        return orderRepository.save(order);
+    }
+
+    private void validateStatusChange(OrderStatus current, OrderStatus next) {
+
+        if (current == OrderStatus.DELIVERED || current == OrderStatus.CANCELLED)
+            throw new RuntimeException("Bu statusdan sonra dəyişiklik etmək mümkün deyil.");
+
+        if (current == OrderStatus.PENDING && next != OrderStatus.CONFIRMED)
+            throw new RuntimeException("PENDING statusu yalnız CONFIRMED statusuna keçə bilər.");
+
+        if (current == OrderStatus.CONFIRMED && next != OrderStatus.PROCESSING)
+            throw new RuntimeException("CONFIRMED statusu yalnız PROCESSING statusuna keçə bilər.");
+
+        if (current == OrderStatus.PROCESSING && next != OrderStatus.SHIPPED)
+            throw new RuntimeException("PROCESSING statusu yalnız SHIPPED statusuna keçə bilər.");
+
+        if (current == OrderStatus.SHIPPED && next != OrderStatus.DELIVERED)
+            throw new RuntimeException("SHIPPED statusu yalnız DELIVERED statusuna keçə bilər.");
+    }
+
 }
