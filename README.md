@@ -8,18 +8,18 @@ CRM Order System is a backend application built with Spring Boot. It provides RE
 
 ## Technologies
 - Java 25 (LTS)
-- Spring Boot (Web, JPA, Lombok)
+- Spring Boot (Web, JPA, Security, Lombok)
 - H2 Database (in‑memory)
 - Maven
 - Postman (for API testing)
 - SLF4J + Logback (logging)
 - Swagger/OpenAPI
+- Prometheus + Grafana + Alertmanager
+- Jaeger (OpenTelemetry Tracing)
+- Elasticsearch + Fluent Bit (Centralized Logging)
+- JUnit + Mockito (Unit Testing)
 - Docker + Docker Compose
-- Prometheus (metrics collection)
-- Alertmanager (alerting via Gmail)
-- Grafana (dashboards & visualization)
 - GitHub Actions (CI/CD pipeline)
-
   
 ---
 
@@ -36,8 +36,11 @@ CRM Order System is a backend application built with Spring Boot. It provides RE
 - ⚡ Request Throttling → in‑memory throttling to prevent abuse
 - 📊 Monitoring → Prometheus metrics, Grafana dashboards (CPU, Memory, Latency, Error Rate, HTTP Requests)
 - 🚨 Alerting → Prometheus rules + Alertmanager Gmail integration
-- 🐳 **Docker Deployment** → planned with docker‑compose.yml
-- ⚙️ CI/CD Pipeline → GitHub Actions build, test, Docker push, and auto‑deploy to VPS
+- 🧵 Distributed Tracing — Jaeger + OpenTelemetry agent
+- 🗂️ Centralized Logging — Fluent Bit → Elasticsearch
+- 🧪 Unit Tests — JUnit + Mockito
+- 🐳 **Docker Deployment** → full stack orchestration
+- ⚙️ CI/CD Pipeline → GitHub Actions auto‑deploy to VPS
 
 
 ## 📂 Project Structure
@@ -54,8 +57,13 @@ crm-order-system/
 ├── model/            # 🗂️ Entity classes (JPA models)
 ├── repository/       # 💾 Spring Data JPA repositories
 ├── security/         # 🔒 JWT filters, authentication & authorization
+├── test/             # 🧪 Unit tests (JUnit + Mockito)
 ├── service/          # ⚙️ Business logic & workflows
 ├── docker-compose.yml # 🐳 App + Prometheus + Alertmanager + Grafana
+├── docker-compose.prod.yml # 🐳 Production deployment stack
+├── Dockerfile # 🏗️ Application Docker image
+├── fluent-bit.conf # 📜 Log forwarder config (Fluent Bit → Elasticsearch)
+├── opentelemetry-javaagent.jar # 🧵 OTEL Java agent for tracing
 ├── prometheus.yml     # 📊 Prometheus config
 ├── rules.yml          # 🚨 Alerting rules
 ├── alertmanager.yml   # 📧 Alertmanager config
@@ -72,13 +80,15 @@ crm-order-system/
 
 1. 👤 **Client** → sends request with JWT token  
 2. 🔒 **Security Layer** → validates token & applies role‑based access  
-3. 🎮 **Controller** → receives request, validates via DTO  
+3. 🎮 **Controller** → receives request 
 4. ⚙️ **Service** → executes business logic  
-5. 💾 **Repository** → performs DB operations (CRUD)  
-6. 🕵️ **AOP + Audit** → logs operations with old/new values  
+5. 💾 **Repository** → performs DB operations
+6. 🕵️ **AOP + Audit** → logs old/new values  
 7. 📧 **Notification** → sends email if event occurs  
 8. 📤 **Response** → returns DTO result to client
 9. 📊 Metrics → Prometheus → Grafana Dashboards → 🚨 Alertmanager (Gmail)
+10. 🧵 Traces sent to Jaeger
+11. 🗂️ Logs shipped to Elasticsearch
 
 
 ---
@@ -107,4 +117,5 @@ Password: (leave empty)
 - 📊 **Prometheus** → [http://localhost:9090](http://localhost:9090)
 - 🚨 **Alertmanager** → [http://localhost:9093](http://localhost:9093)
 - 📈 **Grafana** → [http://localhost:3000](http://localhost:3000) *(default login: admin/admin)*
+- 🧵 **Jaeger** → [http://localhost:16686](http://localhost:16686)
 
