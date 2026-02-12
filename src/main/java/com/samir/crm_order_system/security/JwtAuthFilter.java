@@ -40,6 +40,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws ServletException, IOException {
+        logger.warn(">>> JwtAuthFilter START: " + request.getMethod() + " " + request.getRequestURI());
 
         final String path = request.getRequestURI();
 

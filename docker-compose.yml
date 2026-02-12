@@ -13,13 +13,13 @@ services:
     image: samirali3v/crm-order-app:latest
     ports:
       - "8080:8080"
-    entrypoint:
-      - "java"
-      - "-javaagent:/app/opentelemetry-javaagent.jar"
-      - "-Dotel.exporter.otlp.endpoint=http://jaeger:4318"
-      - "-Dotel.service.name=crm-order-app"
-      - "-jar"
-      - "app.jar"
+#    entrypoint:
+#      - "java"
+#      - "-javaagent:/app/opentelemetry-javaagent.jar"
+#      - "-Dotel.exporter.otlp.endpoint=http://jaeger:4318"
+#      - "-Dotel.service.name=crm-order-app"
+#      - "-jar"
+#      - "app.jar"
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_CONFIG_NAME: application

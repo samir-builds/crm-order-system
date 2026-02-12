@@ -1,5 +1,6 @@
 package com.samir.crm_order_system.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.Data;
 @Entity
 @Table(name = "customers")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer {
 
     @Id

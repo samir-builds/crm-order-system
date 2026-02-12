@@ -131,17 +131,24 @@ public class OrderService {
         if (current == OrderStatus.DELIVERED || current == OrderStatus.CANCELLED)
             throw new RuntimeException("Bu statusdan sonra dəyişiklik etmək mümkün deyil.");
 
+        if (next == OrderStatus.CANCELLED) {
+            if (current == OrderStatus.SHIPPED || current == OrderStatus.DELIVERED)
+                throw new RuntimeException("Bu mərhələdə sifarişi ləğv etmək mümkün deyil.");
+            return;
+        }
+
         if (current == OrderStatus.PENDING && next != OrderStatus.CONFIRMED)
-            throw new RuntimeException("PENDING statusu yalnız CONFIRMED statusuna keçə bilər.");
+            throw new RuntimeException("PENDING yalnız CONFIRMED statusuna keçə bilər.");
 
         if (current == OrderStatus.CONFIRMED && next != OrderStatus.PROCESSING)
-            throw new RuntimeException("CONFIRMED statusu yalnız PROCESSING statusuna keçə bilər.");
+            throw new RuntimeException("CONFIRMED yalnız PROCESSING statusuna keçə bilər.");
 
         if (current == OrderStatus.PROCESSING && next != OrderStatus.SHIPPED)
-            throw new RuntimeException("PROCESSING statusu yalnız SHIPPED statusuna keçə bilər.");
+            throw new RuntimeException("PROCESSING yalnız SHIPPED statusuna keçə bilər.");
 
         if (current == OrderStatus.SHIPPED && next != OrderStatus.DELIVERED)
-            throw new RuntimeException("SHIPPED statusu yalnız DELIVERED statusuna keçə bilər.");
+            throw new RuntimeException("SHIPPED yalnız DELIVERED statusuna keçə bilər.");
     }
+
 
 }
