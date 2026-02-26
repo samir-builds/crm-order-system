@@ -13,20 +13,30 @@ services:
     image: samirali3v/crm-order-app:latest
     ports:
       - "8080:8080"
-#    entrypoint:
-#      - "java"
-#      - "-javaagent:/app/opentelemetry-javaagent.jar"
-#      - "-Dotel.exporter.otlp.endpoint=http://jaeger:4318"
-#      - "-Dotel.service.name=crm-order-app"
-#      - "-jar"
-#      - "app.jar"
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_CONFIG_NAME: application
       JAVA_OPTS: "-Xms256m -Xmx512m"
+      OTEL_SERVICE_NAME: crm-order-app
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      OTEL_EXPORTER_OTLP_PROTOCOL: grpc
     mem_limit: 512m
     volumes:
       - h2data:/data
+    networks:
+      - monitoring
+    depends_on:
+      - otel-collector
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4317:4317"
+      - "4318:4318"
     networks:
       - monitoring
 
@@ -111,7 +121,6 @@ services:
     mem_limit: 128m
     ports:
       - "16686:16686"
-      - "4317:4317"
-      - "4318:4318"
+      - "14250:14250"
     networks:
       - monitoring
