@@ -3,8 +3,9 @@ networks:
 
 volumes:
   grafana-data:
-  h2data:
   esdata:
+  pgdata:
+  pgadmin-data:
 
 services:
   app:
@@ -15,18 +16,45 @@ services:
       - "8080:8080"
     environment:
       SPRING_PROFILES_ACTIVE: docker
-      SPRING_CONFIG_NAME: application
       JAVA_OPTS: "-Xms256m -Xmx512m"
       OTEL_SERVICE_NAME: crm-order-app
       OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
       OTEL_EXPORTER_OTLP_PROTOCOL: grpc
     mem_limit: 512m
-    volumes:
-      - h2data:/data
     networks:
       - monitoring
     depends_on:
       - otel-collector
+      - postgres
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_DB: crmdb
+      POSTGRES_USER: crmuser
+      POSTGRES_PASSWORD: crmpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - monitoring
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - monitoring
+    depends_on:
+      - postgres
 
   otel-collector:
     image: otel/opentelemetry-collector-contrib:latest
