@@ -24,6 +24,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/auth")
 @Profile("!test")
+@CrossOrigin(origins = "http://localhost:3001")
 public class AuthController {
 
     private final AuthenticationManager authManager;

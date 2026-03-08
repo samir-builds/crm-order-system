@@ -38,7 +38,7 @@ public class DataSeeder implements CommandLineRunner {
 
     private void seedAdminUser() {
         Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
-                .orElseThrow(() -> new RoleNotFoundException(-1L));
+                .orElseThrow(() -> new RoleNotFoundException("ROLE_ADMIN not found"));
 
         userRepository.findByUsername("admin").ifPresentOrElse(
                 user -> logger.info("Admin user already exists: {}", user.getUsername()),

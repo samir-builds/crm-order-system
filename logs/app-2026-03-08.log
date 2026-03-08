@@ -1,0 +1,243 @@
+2026-03-08 22:31:29 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-03-08 22:31:29 INFO  c.s.c.r.CustomerRepositoryTest - Starting CustomerRepositoryTest using Java 17.0.12 with PID 13112 (started by user in C:\Users\user\Desktop\crm-order-system)
+2026-03-08 22:31:29 DEBUG c.s.c.r.CustomerRepositoryTest - Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-03-08 22:31:29 INFO  c.s.c.r.CustomerRepositoryTest - The following 1 profile is active: "test"
+2026-03-08 22:31:30 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-08 22:31:30 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 150 ms. Found 6 JPA repository interfaces.
+2026-03-08 22:31:30 INFO  o.s.b.t.a.j.TestDatabaseAutoConfiguration$EmbeddedDataSourceBeanFactoryPostProcessor - Replacing 'dataSource' DataSource bean with embedded version
+2026-03-08 22:31:30 INFO  o.s.j.d.e.EmbeddedDatabaseFactory - Starting embedded database: url='jdbc:h2:mem:b737d3d8-1412-44d7-b040-189a6f8d2119;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-03-08 22:31:31 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-08 22:31:31 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.39.Final
+2026-03-08 22:31:31 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-03-08 22:31:32 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-08 22:31:32 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@e0d5388']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-08 22:31:34 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-08 22:31:34 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-08 22:31:35 INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-08 22:31:36 INFO  c.s.c.r.CustomerRepositoryTest - Started CustomerRepositoryTest in 8.301 seconds (process running for 16.129)
+2026-03-08 22:31:37 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.samir.crm_order_system.repository.OrderRepositoryTest]: OrderRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-08 22:31:37 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.samir.crm_order_system.CrmOrderSystemApplication for test class com.samir.crm_order_system.repository.OrderRepositoryTest
+2026-03-08 22:31:37 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.samir.crm_order_system.repository.ProductRepositoryTest]: ProductRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-08 22:31:37 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.samir.crm_order_system.CrmOrderSystemApplication for test class com.samir.crm_order_system.repository.ProductRepositoryTest
+2026-03-08 22:31:37 ERROR c.s.c.security.JwtUtil - Token parsing failed: JWT expired 1676 milliseconds ago at 2026-03-08T18:31:36.000Z. Current time: 2026-03-08T18:31:37.676Z. Allowed clock skew: 0 milliseconds.
+2026-03-08 22:31:37 ERROR c.s.c.security.JwtUtil - Token parsing failed: The specified key byte array is 72 bits which is not secure enough for any JWT HMAC-SHA algorithm.  The JWT JWA Specification (RFC 7518, Section 3.2) states that keys used with HMAC-SHA algorithms MUST have a size >= 256 bits (the key size must be greater than or equal to the hash output size).  Consider using the Jwts.SIG.HS256.key() builder (or HS384.key() or HS512.key()) to create a key guaranteed to be secure enough for your preferred HMAC-SHA algorithm.  See https://tools.ietf.org/html/rfc7518#section-3.2 for more information.
+2026-03-08 22:31:37 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:37 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 99
+2026-03-08 22:31:37 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d? yenil?nir, ID: 1
+2026-03-08 22:31:37 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:37 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla yenil?ndi, ID: 1
+2026-03-08 22:31:37 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Samir
+2026-03-08 22:31:37 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 1
+2026-03-08 22:31:37 INFO  c.s.c.service.CustomerService - Mü?t?ri siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:31:37 DEBUG c.s.c.service.CustomerService - DB?d?n g?tiril?n mü?t?ri say?: 1
+2026-03-08 22:31:37 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d?n silinir, ID: 1
+2026-03-08 22:31:37 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:37 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla silindi, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.OrderService - Sifari? siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:31:38 DEBUG c.s.c.service.OrderService - DB?d?n g?tiril?n sifari? say?: 1
+2026-03-08 22:31:38 WARN  c.s.c.service.OrderService - Sifari? DB?d?n silinir, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.OrderService - Sifari? u?urla silindi, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 99
+2026-03-08 22:31:38 WARN  c.s.c.service.OrderService - Sifari? DB?d? yenil?nir, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.OrderService - Sifari? u?urla yenil?ndi, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.OrderService - Yeni sifari? DB?y? yaz?l?r: customerId=1, productId=2
+2026-03-08 22:31:38 INFO  c.s.c.service.OrderService - Sifari? u?urla DB?y? yaz?ld?, ID: 10
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: Test Product
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul DB?d? yenil?nir, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul u?urla yenil?ndi, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul DB?d?n silinir, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul u?urla silindi, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.ProductService - M?hsul siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:31:38 DEBUG c.s.c.service.ProductService - DB?d?n g?tiril?n m?hsul say?: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi u?urla yenil?ndi, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:31:38 DEBUG c.s.c.service.UserService - DB?d?n g?tiril?n istifad?çi say?: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - Yeni istifad?çi DB?y? yaz?l?r: Samir
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi u?urla DB?y? yaz?ld?, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi u?urla yenil?ndi, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 99
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi DB?d?n silinir, ID: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:31:38 INFO  c.s.c.service.UserService - ?stifad?çi u?urla silindi, ID: 1
+2026-03-08 22:31:38 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-08 22:43:55 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-03-08 22:43:55 INFO  c.s.c.r.CustomerRepositoryTest - Starting CustomerRepositoryTest using Java 17.0.12 with PID 20824 (started by user in C:\Users\user\Desktop\crm-order-system)
+2026-03-08 22:43:55 DEBUG c.s.c.r.CustomerRepositoryTest - Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-03-08 22:43:55 INFO  c.s.c.r.CustomerRepositoryTest - The following 1 profile is active: "test"
+2026-03-08 22:43:57 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-08 22:43:57 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 244 ms. Found 6 JPA repository interfaces.
+2026-03-08 22:43:57 INFO  o.s.b.t.a.j.TestDatabaseAutoConfiguration$EmbeddedDataSourceBeanFactoryPostProcessor - Replacing 'dataSource' DataSource bean with embedded version
+2026-03-08 22:43:57 INFO  o.s.j.d.e.EmbeddedDatabaseFactory - Starting embedded database: url='jdbc:h2:mem:a39d8f49-7db9-4f14-9981-07da2980937a;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-03-08 22:43:59 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-08 22:43:59 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.39.Final
+2026-03-08 22:43:59 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-03-08 22:44:00 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-08 22:44:00 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@e0d5388']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-08 22:44:04 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-08 22:44:04 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-08 22:44:05 INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-08 22:44:07 INFO  c.s.c.r.CustomerRepositoryTest - Started CustomerRepositoryTest in 13.802 seconds (process running for 23.196)
+2026-03-08 22:44:08 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.samir.crm_order_system.repository.OrderRepositoryTest]: OrderRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-08 22:44:08 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.samir.crm_order_system.CrmOrderSystemApplication for test class com.samir.crm_order_system.repository.OrderRepositoryTest
+2026-03-08 22:44:08 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.samir.crm_order_system.repository.ProductRepositoryTest]: ProductRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-08 22:44:08 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.samir.crm_order_system.CrmOrderSystemApplication for test class com.samir.crm_order_system.repository.ProductRepositoryTest
+2026-03-08 22:44:09 ERROR c.s.c.security.JwtUtil - Token parsing failed: JWT expired 1125 milliseconds ago at 2026-03-08T18:44:08.000Z. Current time: 2026-03-08T18:44:09.125Z. Allowed clock skew: 0 milliseconds.
+2026-03-08 22:44:09 ERROR c.s.c.security.JwtUtil - Token parsing failed: The specified key byte array is 72 bits which is not secure enough for any JWT HMAC-SHA algorithm.  The JWT JWA Specification (RFC 7518, Section 3.2) states that keys used with HMAC-SHA algorithms MUST have a size >= 256 bits (the key size must be greater than or equal to the hash output size).  Consider using the Jwts.SIG.HS256.key() builder (or HS384.key() or HS512.key()) to create a key guaranteed to be secure enough for your preferred HMAC-SHA algorithm.  See https://tools.ietf.org/html/rfc7518#section-3.2 for more information.
+2026-03-08 22:44:09 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 99
+2026-03-08 22:44:09 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d? yenil?nir, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla yenil?ndi, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Samir
+2026-03-08 22:44:09 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.CustomerService - Mü?t?ri siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:44:09 DEBUG c.s.c.service.CustomerService - DB?d?n g?tiril?n mü?t?ri say?: 1
+2026-03-08 22:44:09 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d?n silinir, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla silindi, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.OrderService - Sifari? siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:44:09 DEBUG c.s.c.service.OrderService - DB?d?n g?tiril?n sifari? say?: 1
+2026-03-08 22:44:09 WARN  c.s.c.service.OrderService - Sifari? DB?d?n silinir, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.OrderService - Sifari? u?urla silindi, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 99
+2026-03-08 22:44:09 WARN  c.s.c.service.OrderService - Sifari? DB?d? yenil?nir, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.OrderService - Sifari? u?urla yenil?ndi, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.OrderService - Yeni sifari? DB?y? yaz?l?r: customerId=1, productId=2
+2026-03-08 22:44:09 INFO  c.s.c.service.OrderService - Sifari? u?urla DB?y? yaz?ld?, ID: 10
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: Test Product
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul DB?d? yenil?nir, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul u?urla yenil?ndi, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul DB?d?n silinir, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul u?urla silindi, ID: 1
+2026-03-08 22:44:09 INFO  c.s.c.service.ProductService - M?hsul siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:44:09 DEBUG c.s.c.service.ProductService - DB?d?n g?tiril?n m?hsul say?: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi u?urla yenil?ndi, ID: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:44:10 DEBUG c.s.c.service.UserService - DB?d?n g?tiril?n istifad?çi say?: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - Yeni istifad?çi DB?y? yaz?l?r: Samir
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi u?urla DB?y? yaz?ld?, ID: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi u?urla yenil?ndi, ID: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 99
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi DB?d?n silinir, ID: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:44:10 INFO  c.s.c.service.UserService - ?stifad?çi u?urla silindi, ID: 1
+2026-03-08 22:44:11 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-08 22:47:17 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-03-08 22:47:18 INFO  c.s.c.r.CustomerRepositoryTest - Starting CustomerRepositoryTest using Java 17.0.12 with PID 20508 (started by user in C:\Users\user\Desktop\crm-order-system)
+2026-03-08 22:47:18 DEBUG c.s.c.r.CustomerRepositoryTest - Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-03-08 22:47:18 INFO  c.s.c.r.CustomerRepositoryTest - The following 1 profile is active: "test"
+2026-03-08 22:47:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-08 22:47:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 465 ms. Found 6 JPA repository interfaces.
+2026-03-08 22:47:22 INFO  o.s.b.t.a.j.TestDatabaseAutoConfiguration$EmbeddedDataSourceBeanFactoryPostProcessor - Replacing 'dataSource' DataSource bean with embedded version
+2026-03-08 22:47:22 INFO  o.s.j.d.e.EmbeddedDatabaseFactory - Starting embedded database: url='jdbc:h2:mem:62e42d7c-193b-4c39-97a7-6a984d7faee2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-03-08 22:47:25 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-08 22:47:25 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.39.Final
+2026-03-08 22:47:26 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-03-08 22:47:27 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-08 22:47:28 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@3f169051']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-08 22:47:34 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-08 22:47:35 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-08 22:47:37 INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-08 22:47:41 INFO  c.s.c.r.CustomerRepositoryTest - Started CustomerRepositoryTest in 27.538 seconds (process running for 43.487)
+2026-03-08 22:47:43 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.samir.crm_order_system.repository.OrderRepositoryTest]: OrderRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-08 22:47:43 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.samir.crm_order_system.CrmOrderSystemApplication for test class com.samir.crm_order_system.repository.OrderRepositoryTest
+2026-03-08 22:47:43 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.samir.crm_order_system.repository.ProductRepositoryTest]: ProductRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-08 22:47:43 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.samir.crm_order_system.CrmOrderSystemApplication for test class com.samir.crm_order_system.repository.ProductRepositoryTest
+2026-03-08 22:47:44 ERROR c.s.c.security.JwtUtil - Token parsing failed: JWT expired 1887 milliseconds ago at 2026-03-08T18:47:43.000Z. Current time: 2026-03-08T18:47:44.887Z. Allowed clock skew: 0 milliseconds.
+2026-03-08 22:47:44 ERROR c.s.c.security.JwtUtil - Token parsing failed: The specified key byte array is 72 bits which is not secure enough for any JWT HMAC-SHA algorithm.  The JWT JWA Specification (RFC 7518, Section 3.2) states that keys used with HMAC-SHA algorithms MUST have a size >= 256 bits (the key size must be greater than or equal to the hash output size).  Consider using the Jwts.SIG.HS256.key() builder (or HS384.key() or HS512.key()) to create a key guaranteed to be secure enough for your preferred HMAC-SHA algorithm.  See https://tools.ietf.org/html/rfc7518#section-3.2 for more information.
+2026-03-08 22:47:45 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 99
+2026-03-08 22:47:45 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d? yenil?nir, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla yenil?ndi, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.CustomerService - Yeni mü?t?ri DB?y? yaz?l?r: Samir
+2026-03-08 22:47:45 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla DB?y? yaz?ld?, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.CustomerService - Mü?t?ri siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:47:45 DEBUG c.s.c.service.CustomerService - DB?d?n g?tiril?n mü?t?ri say?: 1
+2026-03-08 22:47:45 WARN  c.s.c.service.CustomerService - Mü?t?ri DB?d?n silinir, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.CustomerService - Mü?t?ri DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.CustomerService - Mü?t?ri u?urla silindi, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.OrderService - Sifari? siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:47:45 DEBUG c.s.c.service.OrderService - DB?d?n g?tiril?n sifari? say?: 1
+2026-03-08 22:47:45 WARN  c.s.c.service.OrderService - Sifari? DB?d?n silinir, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.OrderService - Sifari? u?urla silindi, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 99
+2026-03-08 22:47:45 WARN  c.s.c.service.OrderService - Sifari? DB?d? yenil?nir, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.OrderService - Sifari? u?urla yenil?ndi, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.OrderService - Sifari? DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.OrderService - Yeni sifari? DB?y? yaz?l?r: customerId=1, productId=2
+2026-03-08 22:47:45 INFO  c.s.c.service.OrderService - Sifari? u?urla DB?y? yaz?ld?, ID: 10
+2026-03-08 22:47:45 INFO  c.s.c.service.ProductService - Yeni m?hsul DB?y? yaz?l?r: Test Product
+2026-03-08 22:47:45 INFO  c.s.c.service.ProductService - M?hsul u?urla DB?y? yaz?ld?, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.ProductService - M?hsul DB?d? yenil?nir, ID: 1
+2026-03-08 22:47:45 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.ProductService - M?hsul u?urla yenil?ndi, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.ProductService - M?hsul DB?d?n silinir, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.ProductService - M?hsul DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.ProductService - M?hsul u?urla silindi, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.ProductService - M?hsul siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:47:46 DEBUG c.s.c.service.ProductService - DB?d?n g?tiril?n m?hsul say?: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi u?urla yenil?ndi, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi siyah?s? DB?d?n g?tirilir...
+2026-03-08 22:47:46 DEBUG c.s.c.service.UserService - DB?d?n g?tiril?n istifad?çi say?: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - Yeni istifad?çi DB?y? yaz?l?r: Samir
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi u?urla DB?y? yaz?ld?, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi u?urla yenil?ndi, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? yenil?nir, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 99
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi DB?d?n silinir, ID: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi DB?d? ID il? axtar?l?r: 1
+2026-03-08 22:47:46 INFO  c.s.c.service.UserService - ?stifad?çi u?urla silindi, ID: 1
+2026-03-08 22:47:47 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
