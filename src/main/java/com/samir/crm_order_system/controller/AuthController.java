@@ -24,7 +24,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/auth")
 @Profile("!test")
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = {"http://localhost:3001", "http://127.0.0.1:3001"})
 public class AuthController {
 
     private final AuthenticationManager authManager;
@@ -46,6 +46,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @CrossOrigin(origins = {"http://localhost:3001", "http://127.0.0.1:3001"})
     public ResponseEntity<Map<String, String>> login(@Valid @RequestBody LoginRequest request) {
         Authentication authentication = authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())

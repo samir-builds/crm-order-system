@@ -37,8 +37,17 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         this.userDetailsService = userDetailsService;
     }
 
+    // 🔹 Əlavə etdiyimiz metod
     @Override
-    protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        // Preflight OPTIONS sorğularını JWT yoxlamasından çıxar
+        return "OPTIONS".equalsIgnoreCase(request.getMethod());
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    @NonNull HttpServletResponse response,
+                                    @NonNull FilterChain filterChain)
             throws ServletException, IOException {
         logger.warn(">>> JwtAuthFilter START: " + request.getMethod() + " " + request.getRequestURI());
 

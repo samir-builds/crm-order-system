@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 import java.util.List;
 
 @Configuration
@@ -53,7 +54,6 @@ public class SecurityConfig {
         return new ProviderManager(provider);
     }
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -79,10 +79,21 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(List.of("http://localhost:3001"));
-        configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
-        configuration.setAllowCredentials(true);
+
+        // bütün originləri açmaq üçün
+        configuration.setAllowedOriginPatterns(List.of("*"));
+
+        // bütün metodlara icazə
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        // bütün headerlərə icazə
         configuration.setAllowedHeaders(List.of("*"));
+
+        // cavabda Authorization headerini göstərmək üçün
+        configuration.setExposedHeaders(List.of("Authorization"));
+
+        configuration.setAllowCredentials(true);
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -94,5 +105,4 @@ public class SecurityConfig {
     public void init() {
         System.out.println(">>> SECURITY CONFIG LOADED <<<");
     }
-
 }
